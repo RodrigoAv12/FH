@@ -1,12 +1,9 @@
 <template>
-<v-container >
-    <RegistroUser></RegistroUser>
-</v-container>
-  
+  <RegistroUser></RegistroUser>
 </template>
 
 <script>
-
+// @ is an alias to /src
 import RegistroUser from "@/components/RegistroUser.vue";
 
 export default {
