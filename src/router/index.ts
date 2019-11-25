@@ -27,7 +27,54 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/RegistroUsuario.vue")
-  }
+  },
+  {
+    path: "/VistaDatos",
+    name: "DatosDeLaEmpresa",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/VistaDatos.vue")
+  },
+  {
+    path: "/RegistraDatos",
+    name: "RegistraDatos",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/RegistraDatos.vue")
+  },
+{
+  path: "/Form1",
+  name: "Formulario1",
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () =>
+    import(/* webpackChunkName: "about" */ "../views/Form1.vue")
+},
+{
+  path: "/SolicitudView",
+  name: "Navegador",
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () =>
+    import(/* webpackChunkName: "about" */ "../views/SolicitudView.vue")
+
+},
+{
+  path: "/CalificaView",
+  name: "Estrellas",
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () =>
+    import(/* webpackChunkName: "about" */ "../views/CalificaView.vue")
+}
+
 ];
 
 const router = new VueRouter({
