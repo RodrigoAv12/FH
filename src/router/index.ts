@@ -64,6 +64,33 @@ const routes = [
   // which is lazy-loaded when the route is visited.
   component: () =>
     import(/* webpackChunkName: "about" */ "../views/CalificaView.vue")
+},
+  {
+  path: "/Servicios_EmpresaV",
+  name: "Servicios_EmpresaV",
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () =>
+    import(/* webpackChunkName: "about" */ "../views/Servicios_EmpresaV.vue")
+},
+{
+  path: "/ContactosV",
+  name: "ContactosV",
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () =>
+    import(/* webpackChunkName: "about" */ "../views/ContactosV.vue")
+},
+{
+  path: "/PerfilesEmpresaV",
+  name: "PerfilesEmpresaV",
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () =>
+    import(/* webpackChunkName: "about" */ "../views/PerfilesEmpresaV.vue")
 }
 
 ];
