@@ -3,29 +3,16 @@
     <v-stepper v-model="e1" alt-labels="true">
       <v-stepper-header>
         <template v-for="(paso, n) in pasos">
-          <v-stepper-step
-            :key="`${n}-step`"
-            :complete="e1 > n + 1"
-            :step="paso.id_paso"
-          >
+          <v-stepper-step :key="`${n}-step`" :complete="e1 > n + 1" :step="paso.id_paso">
             <small>{{ paso.titulo }}</small>
           </v-stepper-step>
           <v-divider v-if="n !== steps" :key="n"></v-divider>
         </template>
       </v-stepper-header>
       <v-stepper-items>
-        <v-stepper-content
-          v-for="(paso, n) in pasos"
-          :key="`${n}-content`"
-          :step="paso.id_paso"
-        >
+        <v-stepper-content v-for="(paso, n) in pasos" :key="`${n}-content`" :step="paso.id_paso">
           <v-card class="mb-12" color="white" height="auto">
-            <h5
-              class="text-center"
-              style="font-family: 'Montserrat', sans-serif;"
-            >
-              {{ paso.titulo }}
-            </h5>
+            <h5 class="text-center" style="font-family: 'Montserrat', sans-serif;">{{ paso.titulo }}</h5>
 
             <!--------Formulario o Contenido-------->
 
@@ -39,15 +26,13 @@
             class="white--text"
             @click="backStep(paso.id_paso)"
             style="margin-right:10px"
-            >Regresar</v-btn
-          >
+          >Regresar</v-btn>
           <v-btn
             :disabled="aceptarDisabled"
             color="primary"
             @click="nextStep(paso.id_paso)"
             style="margin-right:10px"
-            >Siguiente</v-btn
-          >
+          >Siguiente</v-btn>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -146,13 +131,16 @@ export default {
 
   methods: {
     nextStep(n) {
+
       if (this.regresarDisabled === true) {
         this.regresarDisabled = false;
+
       }
       if (n === this.steps) {
         this.aceptarDisabled = true;
         this.e1 = n + 1;
       } else {
+        
         this.e1 = n + 1;
         this.aceptarDisabled = false;
       }
@@ -168,7 +156,8 @@ export default {
         this.regresarDisabled = false;
         this.e1 = n - 1;
       }
-    }
+    },
+    
   }
 };
 </script>
