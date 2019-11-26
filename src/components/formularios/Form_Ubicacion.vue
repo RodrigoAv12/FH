@@ -1,45 +1,49 @@
 <template>
-    <v-container class="white">
-      <v-row align="center">
-        <v-col>
-          <form>
-            <v-container>
-              <v-row align="center">
-                <v-col class="d-flex" cols="12" sm="6">
-                  <v-select :items="paises" label="País"></v-select>
-                </v-col>
-                <v-col class="d-flex" cols="12" sm="6">
-                  <v-select :items="estados" label="Estado"></v-select>
-                </v-col>
-                <v-col class="d-flex" cols="12" sm="6">
-                  <v-select :items="cps" label="Ciudad"></v-select>
-                </v-col>
-                <v-col class="d-flex" cols="12" sm="6">
-                  <v-select :items="cps" label="Código Postal"></v-select>
-                </v-col>
-                <v-col class="d-flex" cols="12" sm="6">
-                  <v-select :items="cps" label="Colonia"></v-select>
-                </v-col>
-                <v-col class="d-flex" cols="12" sm="6">
-                  <v-select :items="cps" label="Calle"></v-select>
-                </v-col>
-              </v-row>
-            </v-container>
-            <!-------------Fecha de Nacimiento----------->
-          </form>
-        </v-col>
-        <v-col align="center" justify="center">
-          <v-img
-            src="https://picsum.photos/id/1005/5760/3840"
-            lazy-src="https://picsum.photos/id/1005/5760/3840"
-            class="black"
-            max-width="500"
-            max-height="300"
-          ></v-img>
-          <h2 class="text-center overline">Imagen de Perfil</h2>
-        </v-col>
-      </v-row>
-    </v-container>
+  <v-container class="white">
+    <v-row align="center">
+      <v-col>
+        <form>
+          <v-container>
+            <v-row align="center">
+              <v-col class="d-flex" cols="12" sm="6">
+                <v-select :items="paises" label="País"></v-select>
+              </v-col>
+              <v-col class="d-flex" cols="12" sm="6">
+                <v-select :items="estados" label="Estado"></v-select>
+              </v-col>
+              <v-col class="d-flex" cols="12" sm="6">
+                <v-select :items="cps" label="Ciudad"></v-select>
+              </v-col>
+              <v-col class="d-flex" cols="12" sm="6">
+                <v-select :items="cps" label="Código Postal"></v-select>
+              </v-col>
+              <v-col class="d-flex" cols="12" sm="6">
+                <v-select :items="cps" label="Colonia"></v-select>
+              </v-col>
+              <v-col class="d-flex" cols="12" sm="6">
+                <v-select :items="cps" label="Calle"></v-select>
+              </v-col>
+            </v-row>
+          </v-container>
+          <!-------------Fecha de Nacimiento----------->
+        </form>
+      </v-col>
+      <v-col align="center" justify="center">
+        <div>
+          <h1>Google Maps Demo</h1>
+
+          <GmapMap :center="center" :map-type-id="mapTypeId" :zoom="5">
+            <GmapMarker
+              v-for="(item, index) in markers"
+              :key="index"
+              :position="item.position"
+              @click="center = item.position"
+            />
+          </GmapMap>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -56,7 +60,13 @@ export default {
   data: () => ({
     nombre: "",
     apellidos: "",
-    estados: ["Querétaro", "Puebla", "Nuevo León", "Guerrero"]
+    estados: ["Querétaro", "Puebla", "Nuevo León", "Guerrero"],
+    center: { lat: -3.350235, lng: 111.995865 },
+    mapTypeId: "terrain",
+    markers: [
+      { position: { lat: -0.48585, lng: 117.1466 } },
+      { position: { lat: -6.9127778, lng: 107.6205556 } }
+    ]
   }),
   computed: {
     checkboxErrors() {
@@ -102,3 +112,10 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.vue-map-container {
+  height: 450px;
+  max-width: 992px;
+  width: 100%;
+}
+</style>
