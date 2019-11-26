@@ -59,21 +59,43 @@ export default {
           page: "/Vista-Capacidades"
         },
         {
-          id: 4,
+
+          id: 5,
           text:"ServiciosEmpresa",
           page:"/Servicios_EmpresaV"
         },
         {
-          id: 5,
+          id: 6,
           text:"Contactos",
           page:"/ContactosV"
         },
         {
-          id: 5,
+          id: 7,
           text:"Perfiles",
           page:"/PerfilesEmpresaV"
         }
 
+
+          id: 8,
+          text:"Empresa",
+          page: "/VistaDatos"
+        },
+        {
+          id: 9,
+          text:"Datos de la empresa",
+          page:"/RegistraDatos"
+        },
+        {
+          id: 10,
+          text: "Solicitudes",
+          page: "/SolicitudView"
+        },
+        {
+          id: 11,
+          text: "Califica",
+          page: "/CalificaView"
+        }
+    
       ]
     };
   }

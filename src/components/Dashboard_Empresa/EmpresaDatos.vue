@@ -48,7 +48,7 @@
                         <v-img
                           height="220"
                           outlined
-                          src="@/assets/images/perfilEmpresa/usu.jpg"
+                          src="https://picsum.photos/id/1024/1920/1280"
                         >
                           <v-row align-lg="left">
                             <v-col align-self="left" class="pa-0" cols="12">
@@ -102,7 +102,7 @@
                         <v-img
                           height="180"
                           outlined
-                          src="@/assets/images/perfilEmpresa/graf.jpg"
+                          src="https://picsum.photos/id/1024/1920/1280"
                         >
                      
 
