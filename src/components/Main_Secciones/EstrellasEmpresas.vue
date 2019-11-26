@@ -18,7 +18,7 @@
 
             <div class="subheading pt-4">Too high</div>
             <v-img
-              src="@/assets/images/perfilEmpresa/asus.jpg"
+              src="https://picsum.photos/id/1024/1920/1280"
               aspect-ratio="2"
             ></v-img>
             <v-rating

@@ -4,7 +4,7 @@
 
 <script>
 // @ is an alias to /src
-import NavegadorUsuario from "@/components/UsuarioDashboard/NavegadorUsuario.vue";
+import NavegadorUsuario from "@/components/Dashboard_Usuario/NavegadorUsuario.vue";
 
 export default {
   name: "solicitud",
