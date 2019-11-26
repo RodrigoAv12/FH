@@ -57,7 +57,23 @@ export default {
           id: 3,
           text: "Capacidades",
           page: "/Vista-Capacidades"
+        },
+        {
+          id: 4,
+          text:"ServiciosEmpresa",
+          page:"/Servicios_EmpresaV"
+        },
+        {
+          id: 5,
+          text:"Contactos",
+          page:"/ContactosV"
+        },
+        {
+          id: 5,
+          text:"Perfiles",
+          page:"/PerfilesEmpresaV"
         }
+
       ]
     };
   }
