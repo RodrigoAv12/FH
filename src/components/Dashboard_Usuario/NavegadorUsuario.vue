@@ -6,7 +6,7 @@
           <template v-slot:prepend>
             <v-list-item two-line link>
               <v-list-item-avatar>
-                <v-img src="@/assets/images/perfilEmpresa/ava.png"></v-img>
+                <v-img src="https://picsum.photos/id/1024/1920/1280"></v-img>
               </v-list-item-avatar>
 
               <v-list-item-content style="font-family: 'Rubik', sans-serif">
@@ -44,9 +44,7 @@
            
             <component v-bind:is="Solicitud"  >
      
-      
-            
-             
+   
            
                <h3>
               HOLA</h3>
@@ -60,7 +58,7 @@
 </template>
 
 <script>
-import Solicitud from "@/components/UsuarioDashboard/Solicitud.vue";
+import Solicitud from "@/components/Dashboard_Empresa/Solicitud.vue";
 
 export default {
   components: {
