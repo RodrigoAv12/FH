@@ -73,9 +73,9 @@ export default {
           id: 7,
           text:"Perfiles",
           page:"/PerfilesEmpresaV"
-        }
+        },
 
-
+        {
           id: 8,
           text:"Empresa",
           page: "/VistaDatos"
