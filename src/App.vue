@@ -1,9 +1,7 @@
 <template>
-  <v-app>
+  <div id="app" >
     <Home></Home>
-  </v-app>
-    
-  
+  </div>
 </template>
 
 <script>
@@ -16,11 +14,6 @@ export default {
   },
   components: {
     Home
-    //RegistroUsuario
   },
-  
 };
 </script>
-
-
-

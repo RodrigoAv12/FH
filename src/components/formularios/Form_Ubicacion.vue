@@ -28,20 +28,7 @@
           <!-------------Fecha de Nacimiento----------->
         </form>
       </v-col>
-      <v-col align="center" justify="center">
-        <div>
-          <h1>Google Maps Demo</h1>
-
-          <GmapMap :center="center" :map-type-id="mapTypeId" :zoom="5">
-            <GmapMarker
-              v-for="(item, index) in markers"
-              :key="index"
-              :position="item.position"
-              @click="center = item.position"
-            />
-          </GmapMap>
-        </div>
-      </v-col>
+      
     </v-row>
   </v-container>
 </template>
@@ -60,13 +47,7 @@ export default {
   data: () => ({
     nombre: "",
     apellidos: "",
-    estados: ["Querétaro", "Puebla", "Nuevo León", "Guerrero"],
-    center: { lat: -3.350235, lng: 111.995865 },
-    mapTypeId: "terrain",
-    markers: [
-      { position: { lat: -0.48585, lng: 117.1466 } },
-      { position: { lat: -6.9127778, lng: 107.6205556 } }
-    ]
+    estados: ["Querétaro", "Puebla", "Nuevo León", "Guerrero"]
   }),
   computed: {
     checkboxErrors() {
@@ -97,7 +78,15 @@ export default {
       return errors;
     }
   },
+  mounted() {
+    // At this point, the child GmapMap has been mounted, but
+    // its map has not been initialized.
+    // Therefore we need to write mapRef.$mapPromise.then(() => ...)
 
+    this.$refs.mapRef.$mapPromise.then(map => {
+      map.panTo({ lat: 1.38, lng: 103.8 });
+    });
+  },
   methods: {
     submit() {
       this.$v.$touch();
