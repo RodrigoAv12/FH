@@ -7,12 +7,13 @@
           <v-toolbar-title>Title</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn text>CV</v-btn>
+            <v-btn text @click="componenteActual = 'CV'">CV</v-btn>
             <v-btn text @click="componenteActual = 'NuevoUsuario'"
               >Registro</v-btn
             >
           </v-toolbar-items>
         </v-toolbar>
+        <router-link></router-link>
       </div>
       <!----------Nav Bar---------->
       <v-container>
@@ -33,11 +34,12 @@
 <script>
 import Footer from "@/components/utils/Footer.vue";
 import NuevoUsuario from "@/components/Forms/NuevoUsuario";
+import CV from "./RegistroCV"
 
 export default {
   name: "home",
   components: {
-    // Navbar,
+    CV,
     Footer,
     NuevoUsuario
   },

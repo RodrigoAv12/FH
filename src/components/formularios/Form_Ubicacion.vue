@@ -6,105 +6,53 @@
           <v-container>
             <v-row align="center">
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select :items="paises" label="País"></v-select>
+                <v-select v-model="pais" :items="paises" label="País"></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select :items="estados" label="Estado"></v-select>
+                <v-select v-model="estado" :items="estados" label="Estado"></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select :items="cps" label="Ciudad"></v-select>
+                <v-select v-model="ciudad" :items="cps" label="Ciudad"></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select :items="cps" label="Código Postal"></v-select>
+                <v-select v-model="cp" :items="cps" label="Código Postal"></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select :items="cps" label="Colonia"></v-select>
+                <v-select v-model="colonia" :items="cps" label="Colonia"></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select :items="cps" label="Calle"></v-select>
+                <v-text-field label="Calle" v-model="calle" required></v-text-field>
               </v-col>
             </v-row>
           </v-container>
-          <!-------------Fecha de Nacimiento----------->
         </form>
       </v-col>
-      
     </v-row>
   </v-container>
 </template>
 
 <script>
-import { validationMixin } from "vuelidate";
-import { required, maxLength, email } from "vuelidate/lib/validators";
-
+import { bus } from "@/main";
+import Form_RedesSocialesVue from "./Form_RedesSociales.vue";
 export default {
-  mixins: [validationMixin],
-  validations: {
-    name: { required },
-    email: { required, email },
-    select: { required }
+  data() {
+    return {
+      estados: ["Querétaro", "Puebla", "Nuevo León", "Guerrero"],
+      paises: ["México", "País 2", "USA", "Perú"],
+      pais: "",
+      estado: "",
+      ciudad: "",
+      cp: "",
+      colonia: "",
+      calle: ""
+    };
   },
-  data: () => ({
-    nombre: "",
-    apellidos: "",
-    estados: ["Querétaro", "Puebla", "Nuevo León", "Guerrero"]
-  }),
-  computed: {
-    checkboxErrors() {
-      const errors = [];
-      if (!this.$v.checkbox.$dirty) return errors;
-      !this.$v.checkbox.checked && errors.push("You must agree to continue!");
-      return errors;
-    },
-    selectErrors() {
-      const errors = [];
-      if (!this.$v.select.$dirty) return errors;
-      !this.$v.select.required && errors.push("Item is required");
-      return errors;
-    },
-    nameErrors() {
-      const errors = [];
-      if (!this.$v.name.$dirty) return errors;
-      !this.$v.name.maxLength &&
-        errors.push("Name must be at most 10 characters long");
-      !this.$v.name.required && errors.push("Name is required.");
-      return errors;
-    },
-    emailErrors() {
-      const errors = [];
-      if (!this.$v.email.$dirty) return errors;
-      !this.$v.email.email && errors.push("Must be valid e-mail");
-      !this.$v.email.required && errors.push("E-mail is required");
-      return errors;
-    }
-  },
-  mounted() {
-    // At this point, the child GmapMap has been mounted, but
-    // its map has not been initialized.
-    // Therefore we need to write mapRef.$mapPromise.then(() => ...)
 
-    this.$refs.mapRef.$mapPromise.then(map => {
-      map.panTo({ lat: 1.38, lng: 103.8 });
-    });
-  },
   methods: {
-    submit() {
-      this.$v.$touch();
-    },
-    clear() {
-      this.$v.$reset();
-      this.name = "";
-      this.email = "";
-      this.select = null;
-      this.checkbox = false;
+    agregarUbicacion: function() {
+      bus.$emit('agregarUbicacion','Holis')
     }
   }
 };
 </script>
-<style lang="scss" scoped>
-.vue-map-container {
-  height: 450px;
-  max-width: 992px;
-  width: 100%;
-}
-</style>
+

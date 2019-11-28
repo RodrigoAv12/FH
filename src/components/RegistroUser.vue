@@ -15,9 +15,10 @@
             <h5 class="text-center" style="font-family: 'Montserrat', sans-serif;">{{ paso.titulo }}</h5>
 
             <!--------Formulario o Contenido-------->
-
-            <component :is="paso.name" :key="paso.id_paso"></component>
-
+              <keep-alive>
+                <component :is="paso.name" :key="paso.id_paso" :users="unregisteredUsers"></component>
+                
+              </keep-alive>
             <!--------Final del Formulario o Contenido-------->
           </v-card>
           <v-btn
@@ -49,6 +50,7 @@ import Form_Idiomas from "@/components/formularios/Form_Idiomas.vue";
 import Form_HistorialLaboral from "@/components/formularios/Form_HistorialLaboral.vue";
 import Form_Cursos from "@/components/formularios/Form_Cursos.vue";
 import Competencias from "@/components/formularios/Form_Competencias.vue";
+import {bus} from '@/main';
 
 export default {
   components: {
@@ -62,8 +64,19 @@ export default {
     Form_Cursos,
     Competencias
   },
+  props: {
+    pais:{type: String},
+    estado:{type: String} 
+  },
+  created (){
+    bus.$on('agregarUbicacion', (data) => {
+      this.pais = data
+      
+    })
+  },
   data() {
     return {
+      
       e1: 0,
       steps: 9,
       aceptarDisabled: false,
@@ -131,7 +144,29 @@ export default {
 
   methods: {
     nextStep(n) {
-
+      switch(n){
+        case 1: alert(n)
+        break
+        case 2: alert(n)
+        break
+        case 3: alert(n)
+        break
+        case 4: alert(n)
+        break
+        case 5: alert(n)
+        break
+        case 6: alert(n)
+        break
+        case 7: alert(n)
+        break
+        case 8: alert(n)
+        break
+        case 9: alert(n)
+        break
+        case 10: alert(n)
+        break
+        default:
+      }
       if (this.regresarDisabled === true) {
         this.regresarDisabled = false;
 
@@ -157,7 +192,11 @@ export default {
         this.e1 = n - 1;
       }
     },
+    agregarUbicacion(){
+      alert(this.pais+ " " + this.estado)
+    }
     
-  }
+  },
+  
 };
 </script>
