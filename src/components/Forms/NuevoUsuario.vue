@@ -5,7 +5,11 @@
         <v-row justify="center">
           <v-card width="550px">
             <v-card-title>
-              <v-row justify="center" align="center" style="margin-bottom:-30px">
+              <v-row
+                justify="center"
+                align="center"
+                style="margin-bottom:-30px"
+              >
                 <v-col md="12" cols="12">
                   <v-row justify="center" align="center">
                     <span class="headline">Regìstrate</span>
@@ -81,7 +85,7 @@
                       ></v-text-field>
                     </v-col>
                   </v-row>
-                  <v-row justify="center" >
+                  <v-row justify="center">
                     <v-col md="12" justify-self="center">
                       <v-btn height="50px" block color="primary" type="submint"
                         >Aceptar</v-btn
@@ -90,16 +94,14 @@
                   </v-row>
                 </form>
               </v-container>
-
               <v-row justify="center">
-                <v-col  md="12">
+                <v-col md="12">
                   <v-row align="center" justify="center">
                     <p>
-                    ¿Ya tienes cuenta?
-                    <a href="" target="_blank">iniciar sesiòn</a>
-                  </p>
+                      ¿Ya tienes cuenta?
+                      <a href="" target="_blank">iniciar sesiòn</a>
+                    </p>
                   </v-row>
-                  
                 </v-col>
                 <v-col md="10" style="margin-top:-40px; margin-bottom: -40px">
                   <v-divider></v-divider>
@@ -119,7 +121,9 @@
         </v-row>
       </v-col>
     </v-row>
+
   </v-container>
+
 </template>
 <script>
 export default {
@@ -150,6 +154,7 @@ export default {
           console.log(err.response);
         });
     },
+
     agregarUsuaruio() {
       this.axios
         .post("/post", this.usuario)
