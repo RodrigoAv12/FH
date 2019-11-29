@@ -3,37 +3,39 @@
     <v-stepper v-model="e1" alt-labels="true">
       <v-stepper-header>
         <template v-for="(paso, n) in pasos">
-          <v-stepper-step :key="`${n}-step`" :complete="e1 > n + 1" :step="paso.id_paso">
+          <v-stepper-step
+            :key="`${n}-step`"
+            :complete="e1 > n + 1"
+            :step="paso.id_paso"
+            color="grey darken-4"
+          >
             <small>{{ paso.titulo }}</small>
           </v-stepper-step>
           <v-divider v-if="n !== steps" :key="n"></v-divider>
         </template>
       </v-stepper-header>
       <v-stepper-items>
-        <v-stepper-content v-for="(paso, n) in pasos" :key="`${n}-content`" :step="paso.id_paso">
-          <v-card class="mb-12" color="white" height="auto">
-            <h5 class="text-center" style="font-family: 'Montserrat', sans-serif;">{{ paso.titulo }}</h5>
-
-            <!--------Formulario o Contenido-------->
+        <v-stepper-content
+          v-for="(paso, n) in pasos"
+          :key="`${n}-content`"
+          :step="paso.id_paso"
+        >
+          <v-container>
+            <v-row justify="center">
+              <h5
+                class="text-center"
+                style="font-family: 'Montserrat', sans-serif;"
+              >
+                {{ paso.titulo }}
+              </h5>
+              <!--------Contenido-------->
               <keep-alive>
-                <component :is="paso.name" :key="paso.id_paso" :users="unregisteredUsers"></component>
-                
+                <component v-bind:is="componenteForm"></component>  
               </keep-alive>
-            <!--------Final del Formulario o Contenido-------->
-          </v-card>
-          <v-btn
-            :disabled="regresarDisabled"
-            color="red"
-            class="white--text"
-            @click="backStep(paso.id_paso)"
-            style="margin-right:10px"
-          >Regresar</v-btn>
-          <v-btn
-            :disabled="aceptarDisabled"
-            color="primary"
-            @click="nextStep(paso.id_paso)"
-            style="margin-right:10px"
-          >Siguiente</v-btn>
+              <!--------Contenido-------->
+            </v-row>
+            
+          </v-container>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -50,9 +52,12 @@ import Form_Idiomas from "@/components/formularios/Form_Idiomas.vue";
 import Form_HistorialLaboral from "@/components/formularios/Form_HistorialLaboral.vue";
 import Form_Cursos from "@/components/formularios/Form_Cursos.vue";
 import Competencias from "@/components/formularios/Form_Competencias.vue";
-import {bus} from '@/main';
+import { bus } from "@/main";
 
 export default {
+  props: {
+    step: { type: Boolean }
+  },
   components: {
     Form_DatosPersonales,
     Form_Ubicacion,
@@ -64,23 +69,19 @@ export default {
     Form_Cursos,
     Competencias
   },
-  props: {
-    pais:{type: String},
-    estado:{type: String} 
-  },
-  created (){
-    bus.$on('agregarUbicacion', (data) => {
-      this.pais = data
-      
-    })
+
+  created() {
+    bus.$on("agregarUbicacion", data => {
+      this.pais = data;
+    });
   },
   data() {
     return {
-      
       e1: 0,
       steps: 9,
       aceptarDisabled: false,
       regresarDisabled: true,
+      componenteForm: 'Form_DatosPersonales',
       pasos: [
         {
           id_paso: 1,
@@ -143,39 +144,19 @@ export default {
   },
 
   methods: {
+    siguiente(){
+      bus.$on( )
+    },
+   
     nextStep(n) {
-      switch(n){
-        case 1: alert(n)
-        break
-        case 2: alert(n)
-        break
-        case 3: alert(n)
-        break
-        case 4: alert(n)
-        break
-        case 5: alert(n)
-        break
-        case 6: alert(n)
-        break
-        case 7: alert(n)
-        break
-        case 8: alert(n)
-        break
-        case 9: alert(n)
-        break
-        case 10: alert(n)
-        break
-        default:
-      }
+      
       if (this.regresarDisabled === true) {
         this.regresarDisabled = false;
-
       }
       if (n === this.steps) {
         this.aceptarDisabled = true;
         this.e1 = n + 1;
       } else {
-        
         this.e1 = n + 1;
         this.aceptarDisabled = false;
       }
@@ -192,11 +173,7 @@ export default {
         this.e1 = n - 1;
       }
     },
-    agregarUbicacion(){
-      alert(this.pais+ " " + this.estado)
-    }
     
-  },
-  
+  }
 };
 </script>

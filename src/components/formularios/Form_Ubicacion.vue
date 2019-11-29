@@ -28,12 +28,12 @@
         </form>
       </v-col>
     </v-row>
+    
   </v-container>
 </template>
 
 <script>
 import { bus } from "@/main";
-import Form_RedesSocialesVue from "./Form_RedesSociales.vue";
 export default {
   data() {
     return {
@@ -50,7 +50,10 @@ export default {
 
   methods: {
     agregarUbicacion: function() {
-      bus.$emit('agregarUbicacion','Holis')
+      bus.$emit('siguiente',true)
+    },
+    regresar(){
+      bus.$emit('regresar',false)
     }
   }
 };

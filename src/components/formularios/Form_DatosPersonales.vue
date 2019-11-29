@@ -21,11 +21,26 @@
             label="Imagen de perfil"
           ></v-file-input>
         </v-row>
+
         <h2 class="text-center overline">Imagen de Perfil</h2>
       </div>
     </div>
+    <v-row>
+      <v-btn
+        color="red"
+        class="white--text"
+        @click="backStep(paso.id_paso)"
+        style="margin-right:10px"
+        >Regresar</v-btn
+      >
+      <v-btn
+        color="primary"
+        @click="nextStep(paso.id_paso)"
+        style="margin-right:10px"
+        >Siguiente</v-btn
+      >
+    </v-row>
   </div>
-  
 </template>
 
 <script>
@@ -33,23 +48,22 @@ import { validationMixin } from "vuelidate";
 import { required, maxLength, email } from "vuelidate/lib/validators";
 
 export default {
-  mixins: [validationMixin],
-
-  validations: {
-    name: { required },
-    email: { required, email },
-    select: { required }
-  },
-
-  data: () =>   ({
+  data: () => ({
+    return: {
+      next
+    },
     rules: [
-        value => !value || value.size < 1000000 || 'Avatar size should be less than 2 MB!',
-      ],
+      value =>
+        !value || value.size < 500000 || "Avatar size should be less than 5 MB!"
+    ]
   }),
-  
-
-
-
-
+  methods: {
+    siguiente: function() {
+      bus.$emit("siguiente", next);
+    },
+    regresar() {
+      bus.$emit("regresar", next);
+    }
+  }
 };
 </script>

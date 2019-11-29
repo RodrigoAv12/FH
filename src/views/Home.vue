@@ -8,9 +8,7 @@
           <v-spacer></v-spacer>
           <v-toolbar-items>
             <v-btn text @click="componenteActual = 'CV'">CV</v-btn>
-            <v-btn text @click="componenteActual = 'NuevoUsuario'"
-              >Registro</v-btn
-            >
+            <v-btn text @click="componenteActual = 'NuevoUsuario'">Registro</v-btn>
           </v-toolbar-items>
         </v-toolbar>
         <router-link></router-link>
@@ -34,7 +32,7 @@
 <script>
 import Footer from "@/components/utils/Footer.vue";
 import NuevoUsuario from "@/components/Forms/NuevoUsuario";
-import CV from "./RegistroCV"
+import CV from "./RegistroCV";
 
 export default {
   name: "home",
