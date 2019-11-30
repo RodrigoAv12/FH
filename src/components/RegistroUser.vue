@@ -1,9 +1,10 @@
 <template>
   <v-container style="height: 1000px">
-    <v-stepper v-model="e1" alt-labels="true">
+    <v-stepper v-model="e1" alt-labels >
       <v-stepper-header>
         <template v-for="(paso, n) in pasos">
           <v-stepper-step
+            editable
             :key="`${n}-step`"
             :complete="e1 > n + 1"
             :step="paso.id_paso"
@@ -30,11 +31,10 @@
               </h5>
               <!--------Contenido-------->
               <keep-alive>
-                <component v-bind:is="componenteForm"></component>  
+                <component :is="paso.name" :key="paso.id_paso"></component> 
               </keep-alive>
               <!--------Contenido-------->
             </v-row>
-            
           </v-container>
         </v-stepper-content>
       </v-stepper-items>
@@ -54,6 +54,7 @@ import Form_Cursos from "@/components/formularios/Form_Cursos.vue";
 import Competencias from "@/components/formularios/Form_Competencias.vue";
 import { bus } from "@/main";
 
+
 export default {
   props: {
     step: { type: Boolean }
@@ -71,9 +72,7 @@ export default {
   },
 
   created() {
-    bus.$on("agregarUbicacion", data => {
-      this.pais = data;
-    });
+   
   },
   data() {
     return {
