@@ -1,10 +1,6 @@
 <template>
   <v-container id="example">
-    <v-row
-      justify="center"
-      align="center"
-      style="font-family: 'Noto Sans JP', sans-serif;"
-    >
+    <v-row justify="center" align="center" style="font-family: 'Noto Sans JP', sans-serif;">
       <v-col cols="12" md="12" justify-self="end" align-self="center">
         <v-row justify="center" align="center">
           <v-radio-group
@@ -61,34 +57,30 @@
             <v-row>
               <v-col cols="12" md="8">
                 <v-text-field
-                  v-model="nombre"
-                  :error-messages="nameErrors"
+                  v-model="titulo_estudios"
+                  
                   label="Título de Estudios Realizados"
                   required
-                  @input="$v.name.$touch()"
-                  @blur="$v.name.$touch()"
+                 
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="nombre"
-                  :error-messages="nameErrors"
+                 
                   label="Cédula Profesional"
                   required
-                  @input="$v.name.$touch()"
-                  @blur="$v.name.$touch()"
+                
                 ></v-text-field>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="12" md="8">
                 <v-text-field
-                  v-model="apellidos"
-                  :error-messages="nameErrors"
+                  v-model="centro_estudios"
                   label="Centro de Estudios"
                   required
-                  @input="$v.name.$touch()"
-                  @blur="$v.name.$touch()"
+               
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
@@ -102,19 +94,13 @@
                   min-width="290px"
                 >
                   <template v-slot:activator="{ on }">
-                    <v-text-field
-                      v-model="date"
-                      label="Fecha de Titulación"
-                      readonly
-                      v-on="on"
-                    ></v-text-field>
+                    <v-text-field v-model="estudio_fecha" label="Fecha de Titulación" readonly v-on="on"></v-text-field>
                   </template>
                   <v-date-picker
                     ref="picker"
-                    v-model="date"
+                    v-model="estudio_fecha"
                     :max="new Date().toISOString().substr(0, 10)"
                     min="1950-01-01"
-                    @change="save"
                   ></v-date-picker>
                 </v-menu>
               </v-col>
@@ -122,32 +108,25 @@
             <v-row>
               <v-col cols="12" md="4">
                 <v-text-field
-                  v-model="email"
-                  :error-messages="emailErrors"
+                  v-model="estudio_ciudad"
                   label="Ciudad/Localidad"
                   required
-                  @input="$v.email.$touch()"
-                  @blur="$v.email.$touch()"
+                  
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
-                  v-model="email"
-                  :error-messages="emailErrors"
+                  v-model="estudio_estado"
                   label="Estado/Provincia"
                   required
-                  @input="$v.email.$touch()"
-                  @blur="$v.email.$touch()"
+                  
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
-                  v-model="name"
-                  :error-messages="nameErrors"
+                  v-model="estudio_pais"
                   label="País"
                   required
-                  @input="$v.name.$touch()"
-                  @blur="$v.name.$touch()"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -155,6 +134,19 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-row>
+        <v-btn
+          color="red"
+          class="white--text"
+          @click="RegistrarCV()"
+          style="margin-right:10px"
+        >Regresar</v-btn>
+        <v-btn
+          color="primary"
+          @click="agregarFormacion()"
+          style="margin-right:10px"
+        >Siguiente</v-btn>
+      </v-row>
   </v-container>
 </template>
 
@@ -163,10 +155,29 @@ export default {
   components: {},
   data() {
     return {
+      titulo_estudios: "",
+      centro_estudios: "",
+      estudio_ciudad: "",
+      estudio_estado: "",
+      estudio_pais: "",
+      estudio_fecha:'',
       el: "#example",
       checkbox: 3,
       checkbox_uni: 2
     };
+  },
+  methods: {
+    agregarFormacion() {
+      var formacion = {
+        titulo_estudios: this.titulo_estudios,
+        centro_estudios: this.centro_estudios,
+        estudio_ciudad: this.estudio_ciudad,
+        estudio_estado: this.estudio_estado,
+        estudio_pais: this.estudio_pais,
+        estudio_fecha: this.estudio_fecha
+      };
+      this.$store.dispatch("agregarFormacion", formacion);
+    }
   }
 };
 </script>

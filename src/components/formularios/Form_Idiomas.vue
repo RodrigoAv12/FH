@@ -6,17 +6,17 @@
       <v-col md="9">
         <v-row>
           <v-col class="d-flex" cols="12" md="12">
-            <v-select :items="idiomas" label="Idioma Principal"></v-select>
+            <v-select :items="idiomas" label="Idioma Principal" v-model="idioma_principal"></v-select>
           </v-col>
         </v-row>
         <v-row>
           <v-col md="12" cols="12" justify-self="center" align-self="center">
             <v-row v-for="n in c" :key="n">
               <v-col class="d-flex" cols="12" md="6">
-                <v-select :items="idiomas" label="Idioma"></v-select>
+                <v-select :items="idiomas" label="Idioma" v-model="idioma_1"></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" md="6">
-                <v-select :items="nivel" label="Nivel"></v-select>
+                <v-select :items="nivel" label="Nivel" v-model="idioma_nivel_1"></v-select>
               </v-col>
             </v-row>
             <v-row align="center" justify="center">
@@ -46,6 +46,21 @@
         </v-row>
       </v-col>
     </v-row>
+    <v-row>
+      <v-btn
+        color="red"
+        class="white--text"
+        @click="RegistrarCV()"
+        style="margin-right:10px"
+        >Regresar</v-btn
+      >
+      <v-btn
+        color="primary"
+        @click="agregarIdiomas()"
+        style="margin-right:10px"
+        >Siguiente</v-btn
+      >
+    </v-row>
     
   </v-container>
 </template>
@@ -56,7 +71,24 @@ export default {
     el: "#idioma",
     c: 1,
     nivel: ["A1", "A2", "B1", "B2", "C1", "C2"],
-    idiomas: ["Español", "Inglés", "Alemán"]
-  })
+    idiomas: ["Español", "Inglés", "Alemán"],
+    idioma_principal:'',
+    idioma_1:'',
+    idioma_2:'',
+    idioma_3:'',
+    idioma_nivel_1:'',
+    idioma_nivel_2:'',
+    idioma_nivel_3:'',
+  }),
+  methods:{
+    agregarIdiomas() {
+      var idiomas = {
+        idioma_principal: this.idioma_principal,
+        idioma_1: this.idioma_1,
+        idioma_nivel_1: this.idioma_nivel_1
+      };
+      this.$store.dispatch("agregarIdiomas",idiomas);
+    },
+  }
 };
 </script>

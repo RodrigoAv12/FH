@@ -5,16 +5,15 @@
         <form>
           <v-row>
             <v-col class="d-flex" cols="12" md="4">
-              <v-select :items="cursos" label="Tipo"></v-select>
+              <v-select :items="cursos" v-model="cursos_tipo" label="Tipo"></v-select>
             </v-col>
             <v-col cols="12" md="8">
               <v-text-field
-                v-model="nombre"
-                :error-messages="nameErrors"
+                v-model="cursos_titulo"
+              
                 label="Título de Estudios Realizados"
                 required
-                @input="$v.name.$touch()"
-                @blur="$v.name.$touch()"
+               
               ></v-text-field>
             </v-col>
           </v-row>
@@ -30,11 +29,11 @@
                 min-width="290px"
               >
                 <template v-slot:activator="{ on }">
-                  <v-text-field v-model="date" label="Fecha" readonly v-on="on"></v-text-field>
+                  <v-text-field v-model="cursos_fecha" label="Fecha" readonly v-on="on"></v-text-field>
                 </template>
                 <v-date-picker
                   ref="picker"
-                  v-model="date"
+                  v-model="cursos_fecha" 
                   :max="new Date().toISOString().substr(0, 10)"
                   min="1950-01-01"
                   @change="save"
@@ -43,8 +42,8 @@
             </v-col>
             <v-col cols="12" md="8">
               <v-text-field
-                v-model="apellidos"
-                :error-messages="nameErrors"
+                v-model="cursos_medio"
+                
                 label="Centro de Estudios/Medio de Publicación"
                 required
                 @input="$v.name.$touch()"
@@ -76,16 +75,28 @@
         </p>
       </v-col>
     </v-row>
+    <v-row>
+      <v-btn
+        color="red"
+        class="white--text"
+        @click="RegistrarCV()"
+        style="margin-right:10px"
+      >Regresar</v-btn>
+      <v-btn color="primary" @click="agregarCursos()" style="margin-right:10px">Siguiente</v-btn>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
-  components: {},
   data() {
     return {
+      cursos_titulo: "",
+      cursos_tipo: "",
+      cursos_fecha: "",
+      cursos_medio: "",
       el: "#example",
-      c : 1,
+      c: 1,
       cursos: [
         "Curso",
         "Diplomado",
@@ -94,19 +105,25 @@ export default {
         "Clínica",
         "Congreso",
         "Conferencia"
-      ],
-      
+      ]
     };
   },
   methods: {
     agregar() {
-      this.c = this.c + 1
+      this.c = this.c + 1;
     },
     eliminar() {
-      this.c = this.c - 1
+      this.c = this.c - 1;
     },
-
+    agregarCursos() {
+      var cursos = {
+        cursos_titulo: this.cursos_titulo,
+        cursos_tipo: this.cursos_tipo,
+        cursos_fecha: this.cursos_fecha,
+        cursos_medio: this.cursos_medio 
+      };
+      this.$store.dispatch("agregarCursos", cursos);
     }
-  
+  }
 };
 </script>

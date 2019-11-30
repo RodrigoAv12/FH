@@ -18,11 +18,10 @@
               <v-col cols="12" md="12">
                 <v-text-field
                   :disabled="disabled"
-                  v-model="nombreEmpresa"
+                  v-model="exp_empresa"
                   :error-messages="nameErrors"
                   label="Nombre de la Empresa"
                   required
-                 
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -30,28 +29,26 @@
               <v-col cols="12" md="8">
                 <v-text-field
                   :disabled="disabled"
-                  v-model="puestoEmpresa"
+                  v-model="exp_puesto"
                   :error-messages="nameErrors"
                   label="Puesto en la Empresa"
                   required
-                  
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   :disabled="disabled"
-                  v-model="salario"
+                  v-model="exp_salario"
                   :error-messages="emailErrors"
                   label="Salario"
                   required
-                  
                 ></v-text-field>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="12" md="4">
                 <v-menu
-                :disabled="disabled"
+                  :disabled="disabled"
                   ref="menu"
                   v-model="menu"
                   :close-on-content-click="true"
@@ -63,16 +60,15 @@
                   <template v-slot:activator="{ on }">
                     <v-text-field
                       :disabled="disabled"
-                      v-model="date"
+                      v-model="exp_inicio"
                       label="Fecha de Inicio"
                       readonly
                       v-on="on"
                     ></v-text-field>
                   </template>
                   <v-date-picker
-                  
                     ref="picker"
-                    v-model="date"
+                    v-model="exp_inicio"
                     :max="new Date().toISOString().substr(0, 10)"
                     min="1950-01-01"
                     @change="save"
@@ -80,10 +76,9 @@
                 </v-menu>
               </v-col>
 
-
               <v-col cols="12" md="4">
                 <v-menu
-                :disabled="disabled"
+                  :disabled="disabled"
                   ref="menu"
                   v-model="menu"
                   :close-on-content-click="true"
@@ -95,16 +90,15 @@
                   <template v-slot:activator="{ on }">
                     <v-text-field
                       :disabled="disabled"
-                      v-model="date"
+                      v-model="exp_salida"
                       label="Fecha de Salida"
                       readonly
                       v-on="on"
                     ></v-text-field>
                   </template>
                   <v-date-picker
-                  
                     ref="picker"
-                    v-model="date"
+                    v-model="exp_salida"
                     :max="new Date().toISOString().substr(0, 10)"
                     min="1950-01-01"
                     @change="save"
@@ -114,18 +108,43 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   :disabled="disabled"
-                  v-model="contacto"
+                  v-model="exp_contacto"
                   :error-messages="nameErrors"
                   label="Tel. de Contacto"
                   required
-                  
-                  
                 ></v-text-field>
+              </v-col>
+              <v-col md="12">
+                <v-textarea
+                  :rules="rules"
+                  v-model="exp_funcion"
+                  name="input-7-1"
+                  filled
+                  label="Descripción tu función en la empresa"
+                  auto-grow
+                  counter="250"
+                  maxlength="250"
+                  outlined
+                  height="200"
+                ></v-textarea>
               </v-col>
             </v-row>
           </form>
           <!------------Fin Formulario--------------->
         </v-col>
+      </v-row>
+      <v-row>
+        <v-btn
+          color="red"
+          class="white--text"
+          @click="RegistrarCV()"
+          style="margin-right:10px"
+        >Regresar</v-btn>
+        <v-btn
+          color="primary"
+          @click="agregarHistorialLaboral()"
+          style="margin-right:10px"
+        >Siguiente</v-btn>
       </v-row>
     </v-container>
   </v-container>
@@ -136,20 +155,42 @@ export default {
   components: {},
   data() {
     return {
+      rules: [v => v.length <= 250 || "Sólo se permite 250 caracteres"],
       el: "#example",
       exp: false,
       disabled: false,
+      exp_empresa,
+      exp_puesto,
+      exp_salario,
+      exp_inicio,
+      exp_salida,
+      exp_contacto,
+      exp_funcion
+      
       
     };
   },
   methods: {
     disable(val) {
-      if(val == "true"){
-        this.disabled = true
-      } else{
-        this.disabled = false
+      if (val == "true") {
+        this.disabled = true;
+      } else {
+        this.disabled = false;
       }
     },
-  }
+    agregarHistorialLaboral(){
+
+      var historial = {
+        exp_empresa : this.exp_empresa,
+      exp_puesto : this.exp_puesto,
+      exp_salario : this.exp_salario,
+      exp_inicio : this.exp_inicio,
+      exp_salida : this.exp_salida,
+      exp_contacto : this.exp_contacto,
+      exp_funcion : this.exp_funcion
+      };
+      this.$store.dispatch("agregarHistorialLaboral",historial);
+    },
+  },
 };
 </script>

@@ -52,6 +52,7 @@ import Form_Idiomas from "@/components/formularios/Form_Idiomas.vue";
 import Form_HistorialLaboral from "@/components/formularios/Form_HistorialLaboral.vue";
 import Form_Cursos from "@/components/formularios/Form_Cursos.vue";
 import Competencias from "@/components/formularios/Form_Competencias.vue";
+import Form_Plantilla from "@/components/formularios/Form_Plantilla.vue";
 import { bus } from "@/main";
 
 
@@ -68,7 +69,8 @@ export default {
     Form_PerfilProfesional,
     Form_HistorialLaboral,
     Form_Cursos,
-    Competencias
+    Competencias,
+    Form_Plantilla
   },
 
   created() {
@@ -129,7 +131,8 @@ export default {
         },
         {
           id_paso: 10,
-          titulo: "Plantilla"
+          titulo: "Plantilla",
+          name: "Form_Plantilla"
         }
       ]
     };
