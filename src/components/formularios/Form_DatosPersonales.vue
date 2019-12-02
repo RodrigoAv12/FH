@@ -17,7 +17,7 @@
             label="Correo Electrónico"
           ></v-text-field>
           <v-text-field
-            v-model="telefono"
+            v-model="tel"
             label="Número Teléfono"
           ></v-text-field>
           <v-text-field
