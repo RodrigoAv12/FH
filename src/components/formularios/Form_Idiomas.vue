@@ -3,7 +3,7 @@
   <v-container id="idioma">
     <!------------------------------------->
     <v-row>
-      <v-col md="9">
+      <v-col md="12">
         <v-row>
           <v-col class="d-flex" cols="12" md="12">
             <v-select :items="idiomas" label="Idioma Principal" v-model="idioma_principal"></v-select>

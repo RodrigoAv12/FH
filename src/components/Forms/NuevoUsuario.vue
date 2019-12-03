@@ -5,11 +5,7 @@
         <v-row justify="center">
           <v-card width="550px">
             <v-card-title>
-              <v-row
-                justify="center"
-                align="center"
-                style="margin-bottom:-30px"
-              >
+              <v-row justify="center" align="center" style="margin-bottom:-30px">
                 <v-col md="12" cols="12">
                   <v-row justify="center" align="center">
                     <span class="headline">Regìstrate</span>
@@ -28,12 +24,7 @@
                       sm="6"
                       md="12"
                     >
-                      <v-text-field
-                        v-model="usuario.nombre"
-                        outlined
-                        label="Nombre(s)"
-                        required
-                      ></v-text-field>
+                      <v-text-field v-model="usuario.nombre" outlined label="Nombre(s)" required></v-text-field>
                     </v-col>
 
                     <v-col cols="12" sm="6" md="6" style="margin-bottom:-40px">
@@ -61,12 +52,22 @@
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="12" style="margin-bottom:-40px">
-                      <v-text-field
-                        outlined
-                        label="Confirmar Correo Electrònico"
-                        required
-                      ></v-text-field>
+                      <v-text-field outlined label="Confirmar Correo Electrònico" required></v-text-field>
                     </v-col>
+                    <v-col>
+                      <v-row>
+                        <v-col cols="12" md="4" style="margin-bottom:-40px">
+                          <v-select outlined :items="anios" label="Día" v-model="idioma_1"></v-select>
+                        </v-col>
+                        <v-col cols="12" md="4" style="margin-bottom:-40px">
+                          <v-select outlined :items="anios" label="Mes" v-model="idioma_1"></v-select>
+                        </v-col>
+                        <v-col cols="12" md="4" style="margin-bottom:-40px">
+                          <v-select outlined :items="anios" label="Año" v-model="idioma_1"></v-select>
+                        </v-col>
+                      </v-row>
+                    </v-col>
+
                     <v-col cols="12" md="12" style="margin-bottom:-40px">
                       <v-text-field
                         v-model="usuario.pass"
@@ -77,19 +78,12 @@
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="12" style="margin-bottom:-20px">
-                      <v-text-field
-                        outlined
-                        label="Confirmar Contraseña"
-                        type="password"
-                        required
-                      ></v-text-field>
+                      <v-text-field outlined label="Confirmar Contraseña" type="password" required></v-text-field>
                     </v-col>
                   </v-row>
                   <v-row justify="center">
                     <v-col md="12" justify-self="center">
-                      <v-btn height="50px" block color="primary" type="submint"
-                        >Aceptar</v-btn
-                      >
+                      <v-btn height="50px" block color="primary" type="submit">Aceptar</v-btn>
                     </v-col>
                   </v-row>
                 </form>
@@ -99,7 +93,7 @@
                   <v-row align="center" justify="center">
                     <p>
                       ¿Ya tienes cuenta?
-                      <a href="" target="_blank">iniciar sesiòn</a>
+                      <a href target="_blank">iniciar sesiòn</a>
                     </p>
                   </v-row>
                 </v-col>
@@ -110,7 +104,7 @@
                   <v-row align="center" justify="center">
                     <p>
                       Al registrarte aceptas las
-                      <a href="" target="_blank">condiciones y políticas</a> de
+                      <a href target="_blank">condiciones y políticas</a> de
                       Factor Humano
                     </p>
                   </v-row>
@@ -121,9 +115,7 @@
         </v-row>
       </v-col>
     </v-row>
-
   </v-container>
-
 </template>
 <script>
 export default {

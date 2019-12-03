@@ -21,9 +21,7 @@
         <router-view></router-view>
       </v-container>
       <!----------Footer---------->
-      <v-footer height="150px" absolute app padless dark>
-        <Footer></Footer>
-      </v-footer>
+      
       <!----------Footer---------->
     </v-app>
   </div>
@@ -38,7 +36,7 @@ export default {
   name: "home",
   components: {
     CV,
-    Footer,
+    //Footer,
     NuevoUsuario
   },
   data() {
