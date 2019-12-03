@@ -10,9 +10,12 @@ export default new Vuex.Store({
       Apellido_Materno:'',
       Correo:'',
       Tel:'',
+      Anio:'',
+      Mes:'',
+      Dia:'',
       Pais:'',
       Estado:'',
-      Ciudad:'',
+      Municipio:'',
       CP:'',
       Facebook:'',
       Linkedin:'',
@@ -26,7 +29,7 @@ export default new Vuex.Store({
       Idioma_Nivel_3:'',
       Titulo_Estudios:'',
       Centro_Estudios:'',
-      Estudio_Ciudad:'',
+      Estudio_Municipio:'',
       Estudio_Estado:'',
       Estudio_Pais:'',
       Estudio_Fecha:'',
@@ -56,15 +59,17 @@ export default new Vuex.Store({
       state.CV.Apellido_Materno = datos_personales.apellido_materno
       state.CV.Correo = datos_personales.correo
       state.CV.Tel = datos_personales.tel
+      state.CV.Anio = datos_personales.anio
+      state.CV.Mes = datos_personales.mes
+      state.CV.Dia = datos_personales.dia
     },
     agregarUbicacion(state, ubicacion){
-      state.CV.Pais = ubicacion.pais
+      
       state.CV.Estado = ubicacion.estado
-      state.CV.Ciudad = ubicacion.ciudad
+      state.CV.Municipio = ubicacion.municipio
       state.CV.CP = ubicacion.cp
-      console.log(state.CV.Pais);
       console.log(state.CV.Estado);
-      console.log(state.CV.Ciudad);
+      console.log(state.CV.Municipio);
       console.log(state.CV.CP);
       
     },
@@ -91,7 +96,6 @@ export default new Vuex.Store({
       console.log(state.CV.Idioma_Principal);
       console.log(state.CV.Idioma_1);
       console.log(state.CV.Idioma_Nivel_1);
-      
     },
     agregarHistorialLaboral(state, historial){
       state.CV.Exp_Empresa = historial.exp_empresa
@@ -108,19 +112,18 @@ export default new Vuex.Store({
       console.log(state.CV.Exp_Fecha_Salida);
       console.log(state.CV.Exp_Tel_Contacto);
       console.log(state.CV.Exp_Funcion);
-      
     },
     agregarFormacion(state, formacion){
       state.CV.Titulo_Estudios = formacion.titulo_estudios
       state.CV.Centro_Estudios = formacion.centro_estudios
-      state.CV.Estudio_Ciudad = formacion.estudio_ciudad
+      state.CV.Estudio_Municipio = formacion.estudio_Municipio
       state.CV.Estudio_Estado = formacion.estudio_estado
       state.CV.Estudio_Pais = formacion.estudio_pais
       state.CV.Estudio_Fecha = formacion.estudio_fecha
 
       console.log(state.CV.Titulo_Estudios);
       console.log(state.CV.Centro_Estudios );
-      console.log(state.CV.Estudio_Ciudad );
+      console.log(state.CV.Estudio_Municipio );
       console.log(state.CV.Estudio_Estado);
       console.log(state.CV.Estudio_Pais);
       console.log(state.CV.Estudio_Fecha);

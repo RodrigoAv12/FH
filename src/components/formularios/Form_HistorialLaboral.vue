@@ -13,15 +13,20 @@
       <v-row align="center" justify="center">
         <v-col cols="12" md="12">
           <!------------Fin Formulario--------------->
-          <form>
+          
+          <v-form 
+          v-model="form">
             <v-row>
               <v-col cols="12" md="12">
                 <v-text-field
                   :disabled="disabled"
-                  v-model="exp_empresa"
+                  v-model="nombreEmpresa"
                   :error-messages="nameErrors"
                   label="Nombre de la Empresa"
                   required
+                  :rules="nombreE"
+                
+                 
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -29,29 +34,34 @@
               <v-col cols="12" md="8">
                 <v-text-field
                   :disabled="disabled"
-                  v-model="exp_puesto"
+                  v-model="puestoEmpresa"
                   :error-messages="nameErrors"
                   label="Puesto en la Empresa"
                   required
+                  :rules="puestoR"
+                  
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   :disabled="disabled"
-                  v-model="exp_salario"
+                  v-model="salario"
                   :error-messages="emailErrors"
                   label="Salario"
                   required
+                  :rules="salarioRules"
+
+                  
                 ></v-text-field>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="12" md="4">
                 <v-menu
-                  :disabled="disabled"
+                :disabled="disabled"
                   ref="menu"
                   v-model="menu"
-                  :close-on-content-click="true"
+                  :close-on-content-click="false"
                   transition="scale-transition"
                   offset-y
                   full-width
@@ -60,15 +70,18 @@
                   <template v-slot:activator="{ on }">
                     <v-text-field
                       :disabled="disabled"
-                      v-model="exp_inicio"
+                      v-model="date"
                       label="Fecha de Inicio"
                       readonly
+                      :rules="dateRules"
+                      required
                       v-on="on"
                     ></v-text-field>
                   </template>
                   <v-date-picker
+                  
                     ref="picker"
-                    v-model="exp_inicio"
+                    v-model="date"
                     :max="new Date().toISOString().substr(0, 10)"
                     min="1950-01-01"
                     @change="save"
@@ -76,12 +89,13 @@
                 </v-menu>
               </v-col>
 
+
               <v-col cols="12" md="4">
                 <v-menu
-                  :disabled="disabled"
+                :disabled="disabled"
                   ref="menu"
                   v-model="menu"
-                  :close-on-content-click="true"
+                  :close-on-content-click="false"
                   transition="scale-transition"
                   offset-y
                   full-width
@@ -90,15 +104,18 @@
                   <template v-slot:activator="{ on }">
                     <v-text-field
                       :disabled="disabled"
-                      v-model="exp_salida"
+                      v-model="date2"
                       label="Fecha de Salida"
                       readonly
                       v-on="on"
+                      :rules="dateR"
+                      required
                     ></v-text-field>
                   </template>
                   <v-date-picker
+                  
                     ref="picker"
-                    v-model="exp_salida"
+                    v-model="date"
                     :max="new Date().toISOString().substr(0, 10)"
                     min="1950-01-01"
                     @change="save"
@@ -108,42 +125,19 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   :disabled="disabled"
-                  v-model="exp_contacto"
+                  v-model="contacto"
                   :error-messages="nameErrors"
                   label="Tel. de Contacto"
                   required
+                  :rules="contactoRules"
+                  
+                  
                 ></v-text-field>
               </v-col>
-              <v-col md="12">
-                <v-textarea
-                  :rules="rules"
-                  v-model="exp_funcion"
-                  name="input-7-1"
-                  filled
-                  label="Descripción tu función en la empresa"
-                  auto-grow
-                  counter="250"
-                  maxlength="250"
-                  outlined
-                  height="200"
-                ></v-textarea>
-              </v-col>
             </v-row>
-          </form>
+          </v-form>
           <!------------Fin Formulario--------------->
         </v-col>
-      </v-row>
-      <v-row>
-        <v-btn
-          dark
-          @click="siguiente(false)"
-          style="margin-right:10px"
-        >Regresar</v-btn>
-        <v-btn
-          dark
-          @click="agregarHistorialLaboral(), siguiente(true)"
-          style="margin-right:10px"
-        >Siguiente</v-btn>
       </v-row>
     </v-container>
   </v-container>
@@ -154,26 +148,60 @@ export default {
   components: {},
   data() {
     return {
-      rules: [v => v.length <= 250 || "Sólo se permite 250 caracteres"],
       el: "#example",
-      exp: false,
-      disabled: false,
-      exp_empresa,
-      exp_puesto,
-      exp_salario,
-      exp_inicio,
-      exp_salida,
-      exp_contacto,
-      exp_funcion
+      exp: true,
+      disabled: true,
+    
+    nombreEmpresa: "",
+    nombreE: [
+      v => !!v || "Ingresa Texto",
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+
+     puestoEmpresa: "",
+    puestoR: [
+      v => !!v || "Ingresa Texto",
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+
+
+    date: "",
+    dateRules: [
+      v => !!v || "Ingresa Fecha",
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+     salario: "",
+    salarioRules: [
+      v => !!v || "Ingresa Salario",
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+     contacto: "",
+    contactoRules: [
+      v => !!v || "Ingresa Telefono de Contacto",
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+
     };
   },
   methods: {
     disable(val) {
-      if (val == "true") {
-        this.disabled = true;
-      } else {
-        this.disabled = false;
+      if(val == "true"){
+        this.disabled = true
+        this.$delete.form;
+        this.nombreEmpresa= ""
+        this.puestoEmpresa= ""
+        this.salario =""
+        this.date=""
+        this.contacto=""
+      } else{
+        this.disabled = false
       }
+    },
+    validate(exp){
+      if(exp=="true"){
+        this.$refs.form.$delete()
+      }
+     
     },
     agregarHistorialLaboral(){
 
@@ -192,6 +220,7 @@ export default {
     siguiente(x){
       this.$emit('siguiente',x)
     }
-  },
+
+  }
 };
 </script>
