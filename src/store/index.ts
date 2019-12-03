@@ -134,7 +134,6 @@ export default new Vuex.Store({
       console.log(state.CV.Curso_Titulo);
       console.log(state.CV.Curso_Fecha);
       console.log(state.CV.Curso_Medio );
-      
     },  
     agregarCompetencias(state, competencias){
       state.CV.Sector_1 = competencias.sector_1
@@ -147,7 +146,7 @@ export default new Vuex.Store({
       console.log(state.CV.Area_1 );
     },
   },
-  
+
   actions: {
     agregarDatosPersonales(context, datos_personales){
       context.commit('agregarDatosPersonales', datos_personales)

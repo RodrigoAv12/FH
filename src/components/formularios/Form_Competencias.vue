@@ -18,7 +18,11 @@
                   </v-row>
                 </v-col>
                 <v-col class="d-flex" cols="12" md="4" v-for="n in c" :key="n">
-                  <v-select v-model="sector_1" :items="cursos" :label="`Sector ${n}`"></v-select>
+                  <v-select
+                    v-model="sector_1"
+                    :items="cursos"
+                    :label="`Sector ${n}`"
+                  ></v-select>
                 </v-col>
               </v-row>
             </form>
@@ -61,7 +65,11 @@
                   </v-row>
                 </v-col>
                 <v-col class="d-flex" cols="12" md="4" v-for="n in c2" :key="n">
-                  <v-select v-model="area_1" :items="cursos" :label="`Àrea ${n}`"></v-select>
+                  <v-select
+                    v-model="area_1"
+                    :items="cursos"
+                    :label="`Àrea ${n}`"
+                  ></v-select>
                 </v-col>
               </v-row>
             </form>
@@ -87,16 +95,12 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-btn
-        color="red"
-        class="white--text"
-        @click="RegistrarCV()"
-        style="margin-right:10px"
+      <v-btn dark @click="siguiente(false)" style="margin-right:10px"
         >Regresar</v-btn
       >
       <v-btn
-        color="primary"
-        @click="agregarCompetencias()"
+        dark
+        @click="agregarCompetencias(), siguiente(true)"
         style="margin-right:10px"
         >Siguiente</v-btn
       >
@@ -109,8 +113,8 @@ export default {
   components: {},
   data() {
     return {
-      area_1:'',
-      sector_1:'',
+      area_1: "",
+      sector_1: "",
       el: "#example",
       el2: "#example2",
       c: 1,
@@ -126,13 +130,16 @@ export default {
       ]
     };
   },
-  methods:{
+  methods: {
     agregarCompetencias() {
       var competencias = {
         sector_1: this.sector_1,
         area_1: this.area_1
       };
       this.$store.dispatch("agregarCompetencias", competencias);
+    },
+    siguiente(x) {
+      this.$emit("siguiente", x);
     }
   }
 };

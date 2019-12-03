@@ -29,16 +29,13 @@
         </p>
       </v-col>
     </v-row>
-    <v-btn
-        color="red"
-        class="white--text"
-        @click="RegistrarCV()"
-        style="margin-right:10px"
+    <v-btn dark @click="siguiente(false)" style="margin-right:10px"
         >Regresar</v-btn
       >
+      
       <v-btn
-        color="primary"
-        @click="agregarSocial()"
+        dark
+        @click="agregarSocial(), siguiente(true)"
         style="margin-right:10px"
         >Siguiente</v-btn
       >
@@ -63,6 +60,9 @@ export default {
       };
       this.$store.dispatch("agregarSocial", redes);
     },
+    siguiente(x){
+      this.$emit('siguiente',x)
+    }
   }
 };
 </script>

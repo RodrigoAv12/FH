@@ -6,35 +6,43 @@
           <v-container>
             <v-row align="center">
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select v-model="pais" :items="paises" label="País"></v-select>
+                <v-select
+                  v-model="pais"
+                  :items="paises"
+                  label="País"
+                ></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select v-model="estado" :items="estados" label="Estado"></v-select>
+                <v-select
+                  v-model="estado"
+                  :items="estados"
+                  label="Estado"
+                ></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select v-model="ciudad" :items="cps" label="Ciudad"></v-select>
+                <v-select
+                  v-model="ciudad"
+                  :items="cps"
+                  label="Ciudad"
+                ></v-select>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select v-model="cp" :items="cps" label="Código Postal"></v-select>
+                <v-select
+                  v-model="cp"
+                  :items="cps"
+                  label="Código Postal"
+                ></v-select>
               </v-col>
-              
             </v-row>
           </v-container>
         </form>
       </v-col>
     </v-row>
     <v-row>
-      <v-btn
-        color="red"
-        class="white--text"
-        @click="RegistrarCV()"
-        style="margin-right:10px"
+      <v-btn dark="" @click="siguiente(false)" style="margin-right:10px"
         >Regresar</v-btn
       >
-      <v-btn
-        color="primary"
-        @click="agregarUbicacion()"
-        style="margin-right:10px"
+      <v-btn dark @click="agregarUbicacion(), siguiente(true)" style="margin-right:10px"
         >Siguiente</v-btn
       >
     </v-row>
@@ -42,14 +50,13 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
       estados: ["Querétaro", "Puebla", "Nuevo León", "Guerrero"],
       paises: ["México", "País 2", "USA", "Perú"],
-      ciudades:["Ciudad 1"],
-      cps:["12345"],
+      ciudades: ["Ciudad 1"],
+      cps: ["12345"],
       pais: "",
       estado: "",
       ciudad: "",
@@ -67,8 +74,10 @@ export default {
       };
       this.$store.dispatch("agregarUbicacion", ubicacion);
     },
+    siguiente(x) {
+      this.$emit("siguiente", x);
+    },
+    
   }
 };
-
 </script>
-

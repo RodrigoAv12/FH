@@ -1,6 +1,6 @@
 <template>
   <v-container style="height: 1000px">
-    <v-stepper v-model="e1" alt-labels >
+    <v-stepper v-model="e1" alt-labels>
       <v-stepper-header>
         <template v-for="(paso, n) in pasos">
           <v-stepper-step
@@ -31,7 +31,11 @@
               </h5>
               <!--------Contenido-------->
               <keep-alive>
-                <component :is="paso.name" :key="paso.id_paso"></component> 
+                <component
+                  @siguiente="componenteActual"
+                  :is="paso.name"
+                  :key="paso.id_paso"
+                ></component>
               </keep-alive>
               <!--------Contenido-------->
             </v-row>
@@ -55,8 +59,8 @@ import Competencias from "@/components/formularios/Form_Competencias.vue";
 import Form_Plantilla from "@/components/formularios/Form_Plantilla.vue";
 import { bus } from "@/main";
 
-
 export default {
+  name: "Datos_Personales",
   props: {
     step: { type: Boolean }
   },
@@ -72,17 +76,13 @@ export default {
     Competencias,
     Form_Plantilla
   },
-
-  created() {
-   
-  },
   data() {
     return {
       e1: 0,
       steps: 9,
       aceptarDisabled: false,
       regresarDisabled: true,
-      componenteForm: 'Form_DatosPersonales',
+      componenteForm: "Form_DatosPersonales",
       pasos: [
         {
           id_paso: 1,
@@ -146,36 +146,44 @@ export default {
   },
 
   methods: {
-    siguiente(){
-      bus.$on( )
-    },
-   
-    nextStep(n) {
-      
-      if (this.regresarDisabled === true) {
-        this.regresarDisabled = false;
+    componenteActual: function(x) {
+      if (x === true) {
+        if (this.e1 === 0) {
+          this.e1 = this.e1 + 2;
+        } else {
+          this.e1 = this.e1 + 1;
+        }
       }
-      if (n === this.steps) {
-        this.aceptarDisabled = true;
-        this.e1 = n + 1;
-      } else {
-        this.e1 = n + 1;
-        this.aceptarDisabled = false;
+      else{
+        this.e1 = this.e1 - 1
       }
-    },
-    backStep(n) {
-      if (this.aceptarDisabled === true) {
-        this.aceptarDisabled = false;
-      }
-      if (n <= 2) {
-        this.regresarDisabled = true;
-        this.e1 = n - 1;
-      } else {
-        this.regresarDisabled = false;
-        this.e1 = n - 1;
-      }
-    },
-    
+      console.log(this.e1);
+    }
+
+    // nextStep(n) {
+    //   if (this.regresarDisabled === true) {
+    //     this.regresarDisabled = false;
+    //   }
+    //   if (n === this.steps) {
+    //     this.aceptarDisabled = true;
+    //     this.e1 = n + 1;
+    //   } else {
+    //     this.e1 = n + 1;
+    //     this.aceptarDisabled = false;
+    //   }
+    // },
+    // backStep(n) {
+    //   if (this.aceptarDisabled === true) {
+    //     this.aceptarDisabled = false;
+    //   }
+    //   if (n <= 2) {
+    //     this.regresarDisabled = true;
+    //     this.e1 = n - 1;
+    //   } else {
+    //     this.regresarDisabled = false;
+    //     this.e1 = n - 1;
+    //   }
+    // },
   }
 };
 </script>

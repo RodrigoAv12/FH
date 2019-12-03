@@ -135,14 +135,13 @@
       </v-row>
       <v-row>
         <v-btn
-          color="red"
-          class="white--text"
-          @click="RegistrarCV()"
+          dark
+          @click="siguiente(false)"
           style="margin-right:10px"
         >Regresar</v-btn>
         <v-btn
-          color="primary"
-          @click="agregarHistorialLaboral()"
+          dark
+          @click="agregarHistorialLaboral(), siguiente(true)"
           style="margin-right:10px"
         >Siguiente</v-btn>
       </v-row>
@@ -166,8 +165,6 @@ export default {
       exp_salida,
       exp_contacto,
       exp_funcion
-      
-      
     };
   },
   methods: {
@@ -190,7 +187,11 @@ export default {
       exp_funcion : this.exp_funcion
       };
       this.$store.dispatch("agregarHistorialLaboral",historial);
+  
     },
+    siguiente(x){
+      this.$emit('siguiente',x)
+    }
   },
 };
 </script>

@@ -24,15 +24,14 @@
     </v-col>
     <v-col md="12">
       <v-btn
-        color="red"
-        class="white--text"
-        @click="RegistrarCV()"
+        dark
+        @click="siguiente(false)"
         style="margin-right:10px"
         >Regresar</v-btn
       >
       <v-btn
-        color="primary"
-        @click="agregarPerfilProfesional()"
+        dark
+        @click="agregarPerfilProfesional(), siguiente(true)"
         style="margin-right:10px"
         >Siguiente</v-btn
       >
@@ -56,7 +55,11 @@ export default {
 
       this.$store.dispatch("agregarPerfilProfesional",pp);
       
+    
     },
+    siguiente(x){
+      this.$emit('siguiente',x)
+    }
 
   }
 };

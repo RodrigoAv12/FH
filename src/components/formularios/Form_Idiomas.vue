@@ -48,15 +48,14 @@
     </v-row>
     <v-row>
       <v-btn
-        color="red"
-        class="white--text"
-        @click="RegistrarCV()"
+        dark
+        @click="siguiente(false)"
         style="margin-right:10px"
         >Regresar</v-btn
       >
       <v-btn
-        color="primary"
-        @click="agregarIdiomas()"
+        dark
+        @click="agregarIdiomas(), siguiente(true)"
         style="margin-right:10px"
         >Siguiente</v-btn
       >
@@ -88,7 +87,11 @@ export default {
         idioma_nivel_1: this.idioma_nivel_1
       };
       this.$store.dispatch("agregarIdiomas",idiomas);
+    
     },
+    siguiente(x){
+      this.$emit('siguiente',x)
+    }
   }
 };
 </script>
