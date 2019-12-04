@@ -9,6 +9,7 @@
           <v-toolbar-items>
             <v-btn text @click="componenteActual = 'CV'">CV</v-btn>
             <v-btn text @click="componenteActual = 'NuevoUsuario'">Registro</v-btn>
+            <v-btn text @click="componenteActual = 'LogIn'">LogIn</v-btn>
           </v-toolbar-items>
         </v-toolbar>
         <router-link></router-link>
@@ -31,13 +32,16 @@
 import Footer from "@/components/utils/Footer.vue";
 import NuevoUsuario from "@/components/Forms/NuevoUsuario";
 import CV from "./RegistroCV";
+import LogIn from "@/components/Forms/LogIn";
+
 
 export default {
   name: "home",
   components: {
     CV,
     //Footer,
-    NuevoUsuario
+    NuevoUsuario,
+    LogIn
   },
   data() {
     return {

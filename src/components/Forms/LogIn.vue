@@ -12,7 +12,7 @@
               >
                 <v-col md="12" cols="12">
                   <v-row justify="center" align="center">
-                    <span class="headline">Regìstrate</span>
+                    <span class="headline">Inicio Sesiòn</span>
                   </v-row>
                 </v-col>
               </v-row>
@@ -28,41 +28,14 @@
                       sm="6"
                       md="12"
                     >
-                      <v-text-field
-                        v-model="usuario.nombre"
-                        outlined
-                        label="Nombre(s)"
-                        required
-                      ></v-text-field>
+                      
                     </v-col>
-                    <v-col cols="12" sm="6" md="6" style="margin-bottom:-40px">
-                      <v-text-field
-                        outlined
-                        v-model="usuario.apellido_p"
-                        label="Apellido Paterno"
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="6" style="margin-bottom:-40px">
-                      <v-text-field
-                        outlined
-                        v-model="usuario.apellido_m"
-                        label="Apellido Materno"
-                        required
-                      ></v-text-field>
-                    </v-col>
+                    
+                    
                     <v-col cols="12" md="12" style="margin-bottom:-40px">
                       <v-text-field
                         outlined
-                        v-model="usuario.correo"
                         label="Correo Electrònico"
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="12" style="margin-bottom:-40px">
-                      <v-text-field
-                        outlined
-                        label="Confirmar Correo Electrònico"
                         required
                       ></v-text-field>
                     </v-col>
@@ -72,14 +45,6 @@
                         v-model="usuario.pass"
                         outlined
                         label="Contraseña"
-                        type="password"
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="12" style="margin-bottom:-20px">
-                      <v-text-field
-                        outlined
-                        label="Confirmar Contraseña"
                         type="password"
                         required
                       ></v-text-field>
@@ -129,9 +94,6 @@ export default {
   data() {
     return {
       usuario: {
-        nombre: "",
-        apellido_p: "",
-        apellido_m: "",
         correo: "",
         pass: ""
       }
@@ -144,14 +106,10 @@ export default {
    
 
     agregarUsuaruio() {
-      
       this.axios
         .post("/registro", this.usuario)
         .then(result => {
           this.campos.push(result.data);
-          this.usuario.nombre = "";
-          this.usuario.apellido_p = "";
-          this.usuario.apellido_m = "";
           this.usuario.correo = "";
           this.usuario.pass = "";
         })
