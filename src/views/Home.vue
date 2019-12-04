@@ -34,12 +34,10 @@ import NuevoUsuario from "@/components/Forms/NuevoUsuario";
 import CV from "./RegistroCV";
 import LogIn from "@/components/Forms/LogIn";
 
-
 export default {
   name: "home",
   components: {
     CV,
-    //Footer,
     NuevoUsuario,
     LogIn
   },

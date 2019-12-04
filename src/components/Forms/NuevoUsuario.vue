@@ -137,12 +137,7 @@ export default {
       }
     };
   },
-  created() {
-    this.listar();
-  },
   methods: {
-   
-
     agregarUsuaruio() {
       
       this.axios

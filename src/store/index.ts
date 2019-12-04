@@ -10,9 +10,8 @@ export default new Vuex.Store({
       Apellido_Materno:'',
       Correo:'',
       Tel:'',
-      Anio:'',
-      Mes:'',
-      Dia:'',
+      Fecha_Nacimiento:'',
+      Curp:'',
       Pais:'',
       Estado:'',
       Municipio:'',
@@ -57,11 +56,14 @@ export default new Vuex.Store({
       state.CV.Nombre = datos_personales.nombre
       state.CV.Apellido_Paterno = datos_personales.apellido_paterno
       state.CV.Apellido_Materno = datos_personales.apellido_materno
-      state.CV.Correo = datos_personales.correo
+      state.CV.Curp = datos_personales.curp
       state.CV.Tel = datos_personales.tel
-      state.CV.Anio = datos_personales.anio
-      state.CV.Mes = datos_personales.mes
-      state.CV.Dia = datos_personales.dia
+      state.CV.Fecha_Nacimiento = datos_personales.fecha_nacimiento
+      console.log(state.CV.Nombre);
+      console.log(state.CV.Apellido_Materno);
+      console.log(state.CV.Apellido_Paterno);
+      console.log(state.CV.Tel);
+      console.log(state.CV.Fecha_Nacimiento);
     },
     agregarUbicacion(state, ubicacion){
       
@@ -89,13 +91,17 @@ export default new Vuex.Store({
       state.CV.Idioma_Principal = idiomas.idioma_principal
       state.CV.Idioma_1 = idiomas.idioma_1
       state.CV.Idioma_Nivel_1 = idiomas.idioma_nivel_1
-      state.CV.Idioma_2 = idiomas.Idioma_Nivel_2
+      state.CV.Idioma_2 = idiomas.idioma_2
       state.CV.Idioma_Nivel_2 = idiomas.idioma_nivel_2
       state.CV.Idioma_3 = idiomas.idioma_3
       state.CV.Idioma_Nivel_3 = idiomas.idioma_nivel_3
       console.log(state.CV.Idioma_Principal);
       console.log(state.CV.Idioma_1);
       console.log(state.CV.Idioma_Nivel_1);
+      console.log(state.CV.Idioma_2);
+      console.log(state.CV.Idioma_Nivel_2);
+      console.log(state.CV.Idioma_3);
+      console.log(state.CV.Idioma_Nivel_3);
     },
     agregarHistorialLaboral(state, historial){
       state.CV.Exp_Empresa = historial.exp_empresa

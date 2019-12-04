@@ -5,22 +5,19 @@
         <form>
           <v-container>
             <v-row align="center">
-              <v-col class="d-flex" cols="12" md="4">
+              <v-col class="d-flex" cols="12" md="8">
                 <v-text-field v-model="cp" label="Còdigo Postal"></v-text-field>
               </v-col>
               <v-col class="d-flex" cols="12" md="4">
-                <v-select
-                  v-model="municipio"
-                  :items="municipios"
-                  label="Municipios"
-                ></v-select>
+                <v-btn>Validar mi código postal</v-btn>
               </v-col>
-              <v-col class="d-flex" cols="12" md="4">
-                <v-select
-                  v-model="estado"
-                  :items="estados"
-                  label="Estado"
-                ></v-select>
+            </v-row>
+            <v-row justify="center">
+              <v-col class="d-flex" cols="12" md="6">
+                <h3>Estado</h3>
+              </v-col>
+              <v-col class="d-flex" cols="12" md="6">
+                <h3>Municipio</h3>
               </v-col>
             </v-row>
           </v-container>
@@ -28,15 +25,8 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-btn dark="" @click="siguiente(false)" style="margin-right:10px"
-        >Regresar</v-btn
-      >
-      <v-btn
-        dark
-        @click="agregarUbicacion(), siguiente(true)"
-        style="margin-right:10px"
-        >Siguiente</v-btn
-      >
+      <v-btn dark @click="siguiente(false)" style="margin-right:10px">Regresar</v-btn>
+      <v-btn dark @click="agregarUbicacion(), siguiente(true)" style="margin-right:10px">Siguiente</v-btn>
     </v-row>
   </v-container>
 </template>

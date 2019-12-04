@@ -1,32 +1,37 @@
 <template>
   <v-container fluid>
-    <v-row justify="center">
+    <v-row justify="center" class="pb-5">
       <v-col md="8">
         <v-form ref="form" lazy-validation>
-          <v-text-field v-model="nombre" label="Nombre"> </v-text-field>
-          <v-text-field
-            v-model="apellido_paterno"
-            label="Apellido Paterno"
-          ></v-text-field>
-          <v-text-field
-            v-model="apellido_materno"
-            label="Apellido Materno"
-          ></v-text-field>
+          <v-text-field v-model="nombre" label="Nombre"></v-text-field>
+          <v-text-field v-model="apellido_paterno" label="Apellido Paterno"></v-text-field>
+          <v-text-field v-model="apellido_materno" label="Apellido Materno"></v-text-field>
           <v-row justify="center">
-            <v-col md="12" cols="12" style="margin-bottom:-40px">
-              <p class="text-secondary">Fecha de nacimiento</p>
+            <v-col md="6" cols="12">
+              <v-menu
+                v-model="menu2"
+                :close-on-content-click="false"
+                :nudge-right="40"
+                transition="scale-transition"
+                offset-y
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on }">
+                  <v-text-field
+                    v-model="fecha_nacimiento"
+                    label="Fecha de nacimiento"
+                    
+                    readonly
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker v-model="fecha_nacimiento" @input="menu2 = false"></v-date-picker>
+              </v-menu>
             </v-col>
-            <v-col cols="12" md="4">
-              <v-select  :items="anios" label="Año" v-model="anio"></v-select>
-            </v-col>
-            <v-col cols="12" md="4">
-              <v-select :items="meses" label="Mes" v-model="mes"></v-select>
-            </v-col>
-            <v-col cols="12" md="4">
-              <v-select :items="dias" label="Día" v-model="dia"></v-select>
+            <v-col md="6" cols="12">
+              <v-text-field v-model="tel" label="Número Teléfono" ></v-text-field>
             </v-col>
           </v-row>
-          <v-text-field v-model="tel" label="Número Teléfono"></v-text-field>
           <v-text-field v-model="curp" label="Curp"></v-text-field>
         </v-form>
       </v-col>
@@ -34,42 +39,31 @@
         <v-row>
           <v-col md="12">
             <v-row align="center" justify="center">
-              <v-img
-                src="https://picsum.photos/id/11/500/300"
-                lazy-src="https://picsum.photos/id/11/10/6"
-                aspect-ratio="1"
-                class="grey lighten-2"
-                max-width="500"
-                max-height="300"
-              ></v-img>
+              <v-img aspect-ratio="1" class="grey lighten-2" max-width="500" max-height="300"></v-img>
             </v-row>
           </v-col>
-          <v-col align-self="center" justify-self="center">
-            <v-row justify="center">
-              <v-btn light>
-                Agregar
-              </v-btn>
+          <v-col justify-self="center" style="margin-top:-20px">
+            <v-row justify="center" class="pt-3">
+              <v-btn light @click.native="openFileDialog">Agregar Imagen de Perfil</v-btn>
+              <input
+                accept="image/x-png, image/gif, image/jpeg"
+                type="file"
+                id="file-upload"
+                style="display:none"
+                @change="onFileChange"
+              />
             </v-row>
           </v-col>
         </v-row>
       </v-col>
     </v-row>
-    <v-row justify="left" class="pb-3 pt-5">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde,
-      reprehenderit corrupti quis voluptatibus id itaque accusamus quos nihil
-      recusandae accusantium cum impedit, ratione consectetur expedita!
-      Reprehenderit sit animi vero quasi.
-    </v-row>
-    <v-row>
-      <v-divider style="width:100%" class="grey darken-3"> </v-divider>
-    </v-row>
+
     <v-row>
       <v-btn
         dark
         @click="agregarDatosPersonales(), siguiente(true)"
         style="margin-right:10px"
-        >Siguiente</v-btn
-      >
+      >Siguiente</v-btn>
     </v-row>
   </v-container>
 </template>
@@ -78,48 +72,80 @@
 export default {
   data() {
     return {
+      
+      menu2: false,
+      formData: new FormData(),
+      rules: [
+        value =>
+          !value ||
+          value.size < 5000000 ||
+          "Avatar size should be less than 5 MB!"
+      ],
+
       nombre: "",
       apellido_paterno: "",
       apellido_materno: "",
       correo: "",
       tel: "",
-      anios:[],
-      meses:[],
-      dias:[],
-      anio:"",
-      mes:"",
-      dia:"",
-      fecha_anio: new Date().getFullYear
+      fecha_nacimiento: "",
+      curp: ""
     };
-  },
-  created(){
-    this.crearFecha()
   },
 
   methods: {
-    crearFecha(){
-
-      for (let i = 1950; i <= this.fecha_anio; i++) {
-        this.anios.push(i.toString())
-      }
-      alert("Fecha")
-    },
     agregarDatosPersonales() {
       var datos_personales = {
         nombre: this.nombre,
         apellido_paterno: this.apellido_paterno,
         apellido_materno: this.apellido_materno,
         correo: this.correo,
+        curp: this.curp,
         tel: this.tel,
-        anio: this.anio,
-        mes: this.mes,
-        dia: this.dia
+        fecha_nacimiento: this.fecha_nacimiento
+          .toString()
+          .substring(9, 10)
+          .concat(
+            "-" +
+              this.fecha_nacimiento
+                .toString()
+                .substring(4, 7)
+                .concat(
+                  "-" + this.fecha_nacimiento.toString().substring(11, 15)
+                )
+          )
       };
       this.$store.dispatch("agregarDatosPersonales", datos_personales);
     },
     siguiente(x) {
       this.$emit("siguiente", x);
+    },
+    openFileDialog() {
+      document.getElementById("file-upload").click();
+    },
+    onFileChange(e) {
+      // var self = this;
+      // var files = e.target.files || e.dataTransfer.files;
+      // if(files.length > 0){
+      //     for(var i = 0; i< files.length; i++){
+      //         self.formData.append("file", files[i], files[i].name);
+      //     }
+      // }
+    },
+    uploadFile() {
+      // var self = this;
+      // axios.post('URL', self.formData).then(function (response) {
+      //     console.log(response);
+      // }).catch(function (error) {
+      //     console.log(error);
+      // });
     }
   }
 };
 </script>
+<style scoped>
+.example {
+  background: white;
+  border-bottom: 0.8px solid rgba(20, 18, 18, 0.733);
+  padding: 5px;
+}
+</style>
