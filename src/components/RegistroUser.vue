@@ -3,39 +3,31 @@
     <v-stepper v-model="e1" alt-labels>
       <v-stepper-header>
         <template v-for="(paso, n) in pasos">
-          <v-stepper-step
-            editable
-            :key="`${n}-step`"
-            :complete="e1 > n + 1"
-            :step="paso.id_paso"
-            color="grey darken-4"
-          >
-            <small>{{ paso.titulo }}</small>
-          </v-stepper-step>
-          <v-divider v-if="n !== steps" :key="n"></v-divider>
+          <v-col justify-self="center" align-self="center" :key="n" cols="1" md="1" class="text-center">
+            
+              <v-stepper-step
+                
+                :key="`${n}-step`"
+                :complete="e1 > n + 1"
+                :step="paso.id_paso"
+                color="grey darken-4"
+              > 
+              </v-stepper-step>
+            
+          </v-col>
         </template>
       </v-stepper-header>
       <v-stepper-items>
-        <v-stepper-content
-          v-for="(paso, n) in pasos"
-          :key="`${n}-content`"
-          :step="paso.id_paso"
-        >
+        <v-stepper-content v-for="(paso, n) in pasos" :key="`${n}-content`" :step="paso.id_paso">
           <v-container>
             <v-row justify="center">
               <h5
                 class="text-center"
                 style="font-family: 'Montserrat', sans-serif;"
-              >
-                {{ paso.titulo }}
-              </h5>
+              >{{ paso.titulo }}</h5>
               <!--------Contenido-------->
               <keep-alive>
-                <component
-                  @siguiente="componenteActual"
-                  :is="paso.name"
-                  :key="paso.id_paso"
-                ></component>
+                <component @siguiente="componenteActual" :is="paso.name" :key="paso.id_paso"></component>
               </keep-alive>
               <!--------Contenido-------->
             </v-row>
@@ -137,13 +129,6 @@ export default {
       ]
     };
   },
-  watch: {
-    steps(val) {
-      if (this.e1 > val) {
-        this.e1 = val;
-      }
-    }
-  },
 
   methods: {
     componenteActual: function(x) {
@@ -153,9 +138,8 @@ export default {
         } else {
           this.e1 = this.e1 + 1;
         }
-      }
-      else{
-        this.e1 = this.e1 - 1
+      } else {
+        this.e1 = this.e1 - 1;
       }
       console.log(this.e1);
     }

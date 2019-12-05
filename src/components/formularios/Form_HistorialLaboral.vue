@@ -107,6 +107,10 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-row>
+      <v-btn dark @click="siguiente(false)" style="margin-right:10px">Regresar</v-btn>
+      <v-btn dark @click="agregarHistorialLaboral(), siguiente(true)" style="margin-right:10px">Siguiente</v-btn>
+    </v-row>
   </v-container>
 </template>
 
