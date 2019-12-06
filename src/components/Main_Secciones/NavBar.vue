@@ -1,84 +1,105 @@
 <template>
-  <toolbar
-    class="navbar sticky-top navbar-expand-lg navbar-light grey darken-3"
-  >
-    <v-toolbar-title href="/" class="navbar-brand" style="color: white"
-      >Logo</v-toolbar-title
-    >
+  <div>
+    <toolbar class="navbar sticky-top navbar-expand-lg navbar-light grey darken-3">
+      <v-toolbar-title href="/" class="navbar-brand" style="color: white">Logo</v-toolbar-title>
 
-    <v-spacer></v-spacer>
-    <v-toolbar-items>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <v-btn
-            color="grey darken-3"
-            elevation="0px"
-            class="white--text"
-            v-for="routes in links"
-            v-bind:key="routes.id"
-            :to="`${routes.page}`"
-            >{{ routes.text }}
-          </v-btn>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <b-button v-b-modal.modal-1>Registro</b-button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <v-btn
+              style="margin-right:20px"
+              color="grey darken-3"
+              elevation="0px"
+              class="white--text"
+              v-for="routes in links"
+              v-bind:key="routes.id"
+              :to="`${routes.page}`"
+            >{{ routes.text }}</v-btn>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <v-menu dark offset-y open-delay="10" return-value="RegresaUnValor">
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  style="margin-left:-25px"
+                  color="grey darken-3"
+                  elevation="0px"
+                  class="white--text"
+                  v-on="on"
+                >Mi Cuenta</v-btn>
+              </template>
 
-          <b-modal
-            hide-backdrop
-            style="margin:-10`x"
-            id="modal-1"
-            hide-footer
-            hide-header
-            title="Regístrate"
-          >
-            <!---------------------NavBar-------------------->
-            <NuevoUsuario @inicio="inicioSesion"></NuevoUsuario>
-            <!---------------------NavBar-------------------->
-          </b-modal>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <v-btn
-            color="grey darken-3"
-            elevation="0px"
-            class="white--text"
-            v-if="this.inicio_sesion === 'true'"
-          >
-          </v-btn>
-        </ul>
-      </div>
-    </v-toolbar-items>
-  </toolbar>
+              <v-list>
+                <v-list-item
+                  v-for="(menu_usuario) in menus"
+                  v-bind:key="menu_usuario.id"
+                  :to="`${menu_usuario.page}`"
+                >
+                  <v-list-item-title>{{menu_usuario.titulo}}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <b-button v-b-modal.modal-1>Registro</b-button>
+
+            <b-modal
+              hide-backdrop
+              style="margin:-10`x"
+              id="modal-1"
+              hide-footer
+              hide-header
+              title="Regístrate"
+            >
+              <!---------------------NavBar-------------------->
+              <NuevoUsuario @inicio="inicioSesion"></NuevoUsuario>
+              <!---------------------NavBar-------------------->
+            </b-modal>
+          </ul>
+        </div>
+      </v-toolbar-items>
+    </toolbar>
+    
+  </div>
 </template>
 
 <script>
 import NuevoUsuario from "@/components/Forms/NuevoUsuario";
+import RegistroCV from "@/views/RegistroCV"
+import Inicio from "@/views/Inicio"
+import About from "@/views/About"
 
 export default {
   components: {
-    NuevoUsuario
+    NuevoUsuario,
   },
   data() {
     return {
+      vistaActual: "RegistroUser",
       inicio_sesion: "false",
       dialog: false,
       brand: "Barra de Navegacion",
+      menus: [
+        { titulo: "Registrar CV", page: "/registro_cv" },
+        { titulo: "Mi perfil" }
+      ],
       links: [
         {
           id: 0,
-          text: "Home",
-          page: "/"
+          text: "Inicio",
+          page: "/inicio"
         },
         {
           id: 1,

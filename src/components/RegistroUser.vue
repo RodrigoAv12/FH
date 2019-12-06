@@ -3,17 +3,20 @@
     <v-stepper v-model="e1" alt-labels>
       <v-stepper-header>
         <template v-for="(paso, n) in pasos">
-          <v-col justify-self="center" align-self="center" :key="n" cols="1" md="1" class="text-center">
-            
-              <v-stepper-step
-                
-                :key="`${n}-step`"
-                :complete="e1 > n + 1"
-                :step="paso.id_paso"
-                color="grey darken-4"
-              > 
-              </v-stepper-step>
-            
+          <v-col
+            justify-self="center"
+            align-self="center"
+            :key="n"
+            cols="1"
+            md="1"
+            class="text-center"
+          >
+            <v-stepper-step
+              :key="`${n}-step`"
+              :complete="e1 > n + 1"
+              :step="paso.id_paso"
+              color="grey darken-4"
+            ></v-stepper-step>
           </v-col>
         </template>
       </v-stepper-header>
