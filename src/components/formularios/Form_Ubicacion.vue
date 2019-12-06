@@ -5,19 +5,19 @@
         <form>
           <v-container>
             <v-row align="center">
-              <v-col class="d-flex" cols="12" md="8">
-                <v-text-field v-model="cp" label="Còdigo Postal"></v-text-field>
+              <v-col class="d-flex" cols="6" md="8">
+                <v-text-field v-model="cp" label="Código Postal"></v-text-field>
               </v-col>
-              <v-col class="d-flex" cols="12" md="4">
-                <v-btn>Validar mi código postal</v-btn>
+              <v-col class="d-flex" cols="6" md="4">
+                <v-btn>Validar</v-btn>
               </v-col>
             </v-row>
             <v-row justify="center">
-              <v-col class="d-flex" cols="12" md="6">
-                <h3>Estado</h3>
+              <v-col class="d-flex" cols="6" md="6">
+                <h5>Estado</h5>
               </v-col>
-              <v-col class="d-flex" cols="12" md="6">
-                <h3>Municipio</h3>
+              <v-col class="d-flex" cols="6" md="6">
+                <h5>Municipio</h5>
               </v-col>
             </v-row>
           </v-container>
@@ -35,10 +35,6 @@
 export default {
   data() {
     return {
-      estados: ["Querétaro", "Puebla", "Nuevo León", "Guerrero"],
-
-      ciudades: ["Ciudad 1"],
-      cps: ["12345"],
       estado: "",
       municipio: "",
       cp: ""
