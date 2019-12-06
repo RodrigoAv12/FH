@@ -43,54 +43,9 @@ export default {
   methods: {
     RegistrarCV() {
       this.axios
-        .post("/registroCV", this.cv)
+        .post("/registroCV", this.$store.getters.RegistrarCV)
         .then(result => {
           this.campos.push(result.data);
-          Nombre:'',
-      Apellido_Paterno:'',
-      Apellido_Materno:'',
-      Correo:'',
-      Tel:'',
-      Fecha_Nacimiento:'',
-      Curp:'',
-      Pais:'',
-      Estado:'',
-      Municipio:'',
-      CP:'',
-      Facebook:'',
-      Linkedin:'',
-      Perfil_Profesional:'',
-      Idioma_Principal:'',
-      Idioma_1:'',
-      Idioma_Nivel_1:'',
-      Idioma_2:'',
-      Idioma_Nivel_2:'',
-      Idioma_3:'',
-      Idioma_Nivel_3:'',
-      Titulo_Estudios:'',
-      Centro_Estudios:'',
-      Estudio_Municipio:'',
-      Estudio_Estado:'',
-      Estudio_Pais:'',
-      Estudio_Fecha:'',
-      Exp_Empresa:'',
-      Exp_Puesto:'',
-      Exp_Salario:'',
-      Exp_Fecha_Inicio:'',
-      Exp_Fecha_Salida:'',
-      Exp_Tel_Contacto:'',
-      Exp_Funcion:'',
-      Curso_Tipo:'',
-      Curso_Titulo:'',
-      Curso_Fecha:'',
-      Curso_Medio:'',
-      Sector_1:'',
-      Sector_2:'',
-      Sector_3:'',
-      Area_1:'',
-      Area_2:'',
-      Area_3:'',
-          
         })
         .catch(err => {
           console.log(err.response);
