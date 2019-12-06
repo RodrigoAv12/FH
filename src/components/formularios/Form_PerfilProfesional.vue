@@ -2,6 +2,7 @@
   <v-container fluid>
     <v-col md="12">
       <v-textarea
+      v-model="perfil"
         :rules="rules"
         name="input-7-1"
         filled
@@ -21,6 +22,20 @@
         eveniet aperiam illum. Sapiente, pariatur vel?
       </p>
     </v-col>
+    <v-col md="12">
+      <v-btn
+        dark
+        @click="siguiente(false)"
+        style="margin-right:10px"
+        >Regresar</v-btn
+      >
+      <v-btn
+        dark
+        @click="agregarPerfilProfesional(), siguiente(true)"
+        style="margin-right:10px"
+        >Siguiente</v-btn
+      >
+    </v-col>
   </v-container>
 </template>
 
@@ -28,8 +43,24 @@
 export default {
   data() {
     return {
-      rules: [v => v.length <= 250 || "Sólo se permite 250 caracteres"]
+      rules: [v => v.length <= 250 || "Sólo se permite 250 caracteres"],
+      perfil:''
     };
+  },
+  methods:{
+    agregarPerfilProfesional() {
+      var pp = {
+        perfil : this.perfil
+      };
+
+      this.$store.dispatch("agregarPerfilProfesional",pp);
+      
+    
+    },
+    siguiente(x){
+      this.$emit('siguiente',x)
+    }
+
   }
 };
 </script>

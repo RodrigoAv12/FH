@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+<template>
+
+</template>
+
+=======
 <template>
   <div style="width:100%" >
     <nav class="navbar navbar-expand-lg navbar-light grey darken-3">
@@ -101,3 +107,4 @@ export default {
   }
 };
 </script>
+>>>>>>> 6989abd... El chido

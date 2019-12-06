@@ -1,13 +1,19 @@
 <template>
-  <v-app>
-    <Home></Home>
-  </v-app>
+  <div id="app" >
+    <!-- <Home></Home> -->
+    <v-app>
+      
+      <Navbar></Navbar>
+      <router-view/>
+      <Footer></Footer>
+    </v-app>
     
-  
+  </div>
 </template>
 
 <script>
-import Home from "./views/Home";
+import Navbar from "@/components/Main_Secciones/NavBar"
+import Footer from "@/components/Main_Secciones/Footer"
 
 export default {
   name: "app",
@@ -15,12 +21,9 @@ export default {
     
   },
   components: {
-    Home
-    //RegistroUsuario
+    // Home,
+    Navbar,
+    Footer
   },
-  
 };
 </script>
-
-
-

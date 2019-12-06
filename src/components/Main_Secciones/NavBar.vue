@@ -1,0 +1,136 @@
+<template>
+  <div>
+    <toolbar
+      class="navbar sticky-top navbar-expand-lg navbar-light grey darken-3"
+    >
+      <v-toolbar-title href="/" class="navbar-brand" style="color: white"
+        >Logo</v-toolbar-title
+      >
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <v-btn
+              style="margin-right:20px"
+              color="grey darken-3"
+              elevation="0px"
+              class="white--text"
+              v-for="routes in links"
+              v-bind:key="routes.id"
+              :to="`${routes.page}`"
+              >{{ routes.text }}</v-btn
+            >
+          </ul>
+          <ul class="navbar-nav ml-auto" v-if="inicio_sesion !== true">
+            <b-button v-b-modal.modal-1>Registro</b-button>
+
+            <b-modal
+              hide-backdrop
+              style="margin:-10`x"
+              id="modal-1"
+              hide-footer
+              hide-header
+              title="Regístrate"
+            >
+              <!---------------------NavBar-------------------->
+              <NuevoUsuario @inicio="inicioSesion"></NuevoUsuario>
+              <!---------------------NavBar-------------------->
+            </b-modal>
+          </ul>
+          <ul class="navbar-nav ml-auto" v-if="inicio_sesion === true">
+            <v-menu dark offset-y open-delay="10" return-value="RegresaUnValor">
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  style="margin-left:-25px"
+                  color="grey darken-3"
+                  elevation="0px"
+                  class="white--text"
+                  v-on="on"
+                  >Mi Cuenta</v-btn
+                >
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="menu_usuario in menus"
+                  v-bind:key="menu_usuario.id"
+                  :to="`${menu_usuario.page}`"
+                >
+                  <v-list-item-title>{{
+                    menu_usuario.titulo
+                  }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </ul>
+        </div>
+      </v-toolbar-items>
+    </toolbar>
+  </div>
+</template>
+
+<script>
+import NuevoUsuario from "@/components/Forms/NuevoUsuario";
+import RegistroCV from "@/views/RegistroCV";
+import Inicio from "@/views/Inicio";
+import About from "@/views/About";
+import NavegadorUsuario from "@/views/NavegadorUsuario";
+
+export default {
+  components: {
+    NuevoUsuario
+  },
+  data() {
+    return {
+      vistaActual: "RegistroUser",
+      inicio_sesion: false,
+      dialog: false,
+      brand: "Barra de Navegacion",
+      menus: [
+        {titulo: "Registrar CV", page: "/registro_cv"},
+        {titulo: "Mi perfil", page: "/navegador_usuario"}
+      ],
+      links: [
+        {
+          id: 0,
+          text: "Inicio",
+          page: "/inicio"
+        },
+
+        {
+          id: 1,
+          text: "Registrarse",
+          page: "/RegistroUsuario"
+        }
+      ]
+    };
+  },
+  methods: {
+    showModal() {
+      this.$refs["my-modal"].show();
+    },
+    hideModal() {
+      this.$refs["my-modal"].hide();
+    },
+    toggleModal() {
+      // We pass the ID of the button that we want to return focus to
+      // when the modal has hidden
+      this.$refs["my-modal"].toggle("#toggle-btn");
+    },
+    inicioSesion: function(x) {
+      console.log("Entró");
+      this.inicio_sesion = true;
+    }
+  }
+};
+</script>

@@ -4,48 +4,20 @@
     <v-row class="pa-2" align="center" justify="center">
       <v-col class="d-flex pa-2" cols="12" sm="6" lg="6">
         <v-text-field
-          v-model="nombre"
-          :error-messages="nameErrors"
-          label="Instagram"
-          required
-          prepend-icon="fab fa-instagram"
-          @input="$v.name.$touch()"
-          @blur="$v.name.$touch()"
-        ></v-text-field>
-      </v-col>
-      <v-col class="d-flex pa-2" cols="12" sm="6" lg="6">
-        <v-text-field
-          v-model="nombre"
-          :error-messages="nameErrors"
+          v-model="facebook"
           prepend-icon="fab fa-facebook"
           label="Facebook"
-          required
-          @input="$v.name.$touch()"
-          @blur="$v.name.$touch()"
         ></v-text-field>
       </v-col>
       <v-col class="d-flex pa-2" cols="12" sm="6" lg="6">
         <v-text-field
-          v-model="nombre"
-          :error-messages="nameErrors"
-          prepend-icon="fab fa-twitter"
-          label="Twitter"
+          v-model="linkedin"
+          prepend-icon="fab fa-linkedin"
+          label="linkedin"
           required
-          @input="$v.name.$touch()"
-          @blur="$v.name.$touch()"
         ></v-text-field>
       </v-col>
-      <v-col class="d-flex pa-2" cols="12" sm="6" lg="6">
-        <v-text-field
-          v-model="nombre"
-          :error-messages="nameErrors"
-          label="Google+"
-          prepend-icon="fab fa-google-plus-g"
-          required
-          @input="$v.name.$touch()"
-          @blur="$v.name.$touch()"
-        ></v-text-field>
-      </v-col>
+      
     </v-row>
     <v-row class="pa-2" justify="center">
       <v-col class="d-flex pa-4" cols="12" sm="6" md="12">
@@ -57,9 +29,40 @@
         </p>
       </v-col>
     </v-row>
+    <v-btn dark @click="siguiente(false)" style="margin-right:10px"
+        >Regresar</v-btn
+      >
+      
+      <v-btn
+        dark
+        @click="agregarSocial(), siguiente(true)"
+        style="margin-right:10px"
+        >Siguiente</v-btn
+      >
   </v-container>
 </template>
 
 <script>
-export default {};
+export default {
+
+  data(){
+    return{
+      facebook:'',
+      linkedin:''
+    }
+  },
+  methods:{
+    agregarSocial() {
+      var redes = {
+        facebook: this.facebook,
+        linkedin: this.linkedin,
+        
+      };
+      this.$store.dispatch("agregarSocial", redes);
+    },
+    siguiente(x){
+      this.$emit('siguiente',x)
+    }
+  }
+};
 </script>
