@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <form @submit.prevent="agregarUsuaruio()" class="white">
+    <form @submit.prevent="agregarUsuaruio(),inicio(true)" class="white">
       <v-row justify="center">
         Registro
         <v-col style="margin-bottom:-40px" justify-self="center" cols="12" sm="6" md="12">
@@ -28,7 +28,7 @@
       </v-row>
       <v-row justify="center">
         <v-col md="12" justify-self="center">
-          <v-btn height="50px" block color="primary" type="submit">Aceptar</v-btn>
+          <v-btn  height="50px" block color="primary" type="submit">Aceptar</v-btn>
         </v-col>
       </v-row>
       <v-row justify="center" class="white">
@@ -60,7 +60,9 @@ export default {
   name: "RegistroUsuario",
   data() {
     return {
-      campos: [],
+      campos: [
+        
+      ],
       usuario: {
         nombre: "",
         apellido_p: "",
@@ -82,16 +84,14 @@ export default {
           this.usuario.apellido_m = "";
           this.usuario.correo = "";
           this.usuario.pass = "";
-
-          this.inicio(result.data.id);
         })
         .catch(err => {
           console.log(err.response);
         });
     },
     inicio(x) {
-      console.log("inicio");
-      this.$emit("inicioSesion", x);
+      console.log(x);
+      this.$emit("inicio", x);
     }
   }
 };
