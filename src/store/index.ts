@@ -135,6 +135,7 @@ export default new Vuex.Store({
       console.log(state.CV.Estudio_Fecha);
     },
     agregarCursos(state, cursos){
+      
       state.CV.Curso_Tipo = cursos.cursos_tipo
       state.CV.Curso_Titulo = cursos.cursos_titulo
       state.CV.Curso_Fecha = cursos.cursos_fecha
