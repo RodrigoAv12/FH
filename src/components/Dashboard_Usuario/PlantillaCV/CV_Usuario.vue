@@ -1,149 +1,181 @@
 <template>
+  <div id="app">
+    <v-col class="d-flex pa-2" cols="12" sm="12" md="12">
+      <v-row justify="space-around">
+        <div id="cv" class="instaFade">
+          <div class="mainDetails">
+            <div id="headshot" class="quickFade"></div>
 
-<div id="app">
-  <v-col class="d-flex pa-2" cols="12" sm="12" md="12">
-    <v-row justify="space-around">
-      <div id="cv" class="instaFade">
-        <div class="mainDetails">
-          <div id="headshot" class="quickFade"></div>
-
-          <div id="name">
-            <h1 class="quickFade delayTwo"></h1>
-            <h2 class="quickFade delayThree">Job Title</h2>
-          </div>
-
-          <div id="contactDetails" class="quickFade delayFour">
-            <ul>
-              <li>
-                e:
-                <a href="mailto:joe@bloggs.com" target="_blank"
-                  >joe@bloggs.com</a
-                >
-              </li>
-              <li>w: <a href="http://www.bloggs.com">www.bloggs.com</a></li>
-              <li>m: 01234567890</li>
-            </ul>
-          </div>
-          <div class="clear"></div>
-        </div>
-
-        <div id="mainArea" class="quickFade delayFive">
-          <section>
-            <article>
-              <div class="sectionTitle">
-                <h1>Personal Profile</h1>
-              </div>
-
-              <div class="sectionContent">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer dolor metus, interdum at scelerisque in, porta at
-                  lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit. Donec ultricies massa et
-                  erat luctus hendrerit. Curabitur non consequat enim.
-                  Vestibulum bibendum mattis dignissim. Proin id sapien quis
-                  libero interdum porttitor.
-                </p>
-              </div>
-            </article>
-            <div class="clear"></div>
-          </section>
-
-          <section>
-            <div class="sectionTitle">
-              <h1>Work Experience</h1>
+            <div id="name">
+              <h1 class="quickFade delayTwo"></h1>
+              <h2 class="quickFade delayThree">
+                {{ this.$store.getters.RegistrarCV.Nombre }}
+              </h2>
+              <h3 class="quickFade delayThree">
+                {{ this.$store.getters.RegistrarCV.Apellido_Paterno }}
+              </h3>
+              <h3 class="quickFade delayThree">
+                {{ this.$store.getters.RegistrarCV.Apellido_Materno }}
+              </h3>
             </div>
 
-            <div class="sectionContent">
-              <article>
-                <h2>Job Title at Company</h2>
-                <p class="subDetails">April 2011 - Present</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  ultricies massa et erat luctus hendrerit. Curabitur non
-                  consequat enim. Vestibulum bibendum mattis dignissim. Proin id
-                  sapien quis libero interdum porttitor.
-                </p>
-              </article>
-
-              <article>
-                <h2>Job Title at Company</h2>
-                <p class="subDetails">Janruary 2007 - March 2011</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  ultricies massa et erat luctus hendrerit. Curabitur non
-                  consequat enim. Vestibulum bibendum mattis dignissim. Proin id
-                  sapien quis libero interdum porttitor.
-                </p>
-              </article>
-
-              <article>
-                <h2>Job Title at Company</h2>
-                <p class="subDetails">October 2004 - December 2006</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  ultricies massa et erat luctus hendrerit. Curabitur non
-                  consequat enim. Vestibulum bibendum mattis dignissim. Proin id
-                  sapien quis libero interdum porttitor.
-                </p>
-              </article>
-            </div>
-            <div class="clear"></div>
-          </section>
-
-          <section>
-            <div class="sectionTitle">
-              <h1>Key Skills</h1>
-            </div>
-
-            <div class="sectionContent">
-              <ul class="keySkills">
-                <li>A Key Skill</li>
-                <li>A Key Skill</li>
-                <li>A Key Skill</li>
-                <li>A Key Skill</li>
-                <li>A Key Skill</li>
-                <li>A Key Skill</li>
-                <li>A Key Skill</li>
-                <li>A Key Skill</li>
+            <div id="contactDetails" class="quickFade delayFour">
+              <ul>
+                <li>
+                  Correo
+                  <a>{{ this.$store.getters.RegistrarCV.Correo }}</a>
+                </li>
+                <li>{{ this.$store.getters.RegistrarCV.Tel }}</li>
+                <li>{{ this.$store.getters.RegistrarCV.Fecha_Nacimiento }}</li>
+                <li>{{ this.$store.getters.RegistrarCV.Curp }}</li>
+                <li>{{ this.$store.getters.RegistrarCV.Pais }}</li>
+                <li>{{ this.$store.getters.RegistrarCV.Estado }}</li>
+                <li>{{ this.$store.getters.RegistrarCV.Municipio }}</li>
+                <li>{{ this.$store.getters.RegistrarCV.CP }}</li>
+                <li>{{ this.$store.getters.RegistrarCV.Facebook }}</li>
+                <li>{{ this.$store.getters.RegistrarCV.Linkedin }}</li>
               </ul>
             </div>
             <div class="clear"></div>
-          </section>
+          </div>
 
-          <section>
-            <div class="sectionTitle">
-              <h1>Education</h1>
-            </div>
-
-            <div class="sectionContent">
+          <div id="mainArea" class="quickFade delayFive">
+            <section>
               <article>
-                <h2>College/University</h2>
-                <p class="subDetails">Qualification</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  ultricies massa et erat luctus hendrerit. Curabitur non
-                  consequat enim.
-                </p>
-              </article>
+                <div class="sectionTitle">
+                  <h1>Personal Profile</h1>
+                </div>
 
-              <article>
-                <h2>College/University</h2>
-                <p class="subDetails">Qualification</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  ultricies massa et erat luctus hendrerit. Curabitur non
-                  consequat enim.
-                </p>
+                <div class="sectionContent">
+                  <p>
+                    {{ this.$store.getters.RegistrarCV.Pefil_Profesional }}
+                  </p>
+                </div>
               </article>
-            </div>
-            <div class="clear"></div>
-          </section>
+              <div class="clear"></div>
+            </section>
+
+            <section>
+              <div class="sectionTitle">
+                <h1>Idioma</h1>
+              </div>
+
+              <div class="sectionContent">
+                <article>
+                  <h2>Job Title at Company</h2>
+                  <p class="subDetails">April 2011 - Present</p>
+
+                  <ul>
+                    <li>
+                      Correo
+                      <a>{{
+                        this.$store.getters.RegistrarCV.Idioma_Principal
+                      }}</a>
+                    </li>
+                    <li>{{ this.$store.getters.RegistrarCV.Idioma_1 }}</li>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Idioma_Nivel_1 }}
+                    </li>
+                    <li>{{ this.$store.getters.RegistrarCV.Idioma_2 }}</li>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Idioma_Nivel_2 }}
+                    </li>
+                    <li>{{ this.$store.getters.RegistrarCV.Idioma_3 }}</li>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Idioma_Nivel_3 }}
+                    </li>
+                  </ul>
+                </article>
+
+                <article>
+                  <h2>Titulo de estudios</h2>
+                  <p class="subDetails">Janruary 2007 - March 2011</p>
+                  <ul>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Titulo_Estudios }}
+                    </li>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Centro_Estudios }}
+                    </li>
+
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Estudio_Municipio }}
+                    </li>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Estudio_Estado }}
+                    </li>
+                    <li>{{ this.$store.getters.RegistrarCV.Estudio_Pais }}</li>
+                    <li>{{ this.$store.getters.RegistrarCV.Estudio_Fecha }}</li>
+                  </ul>
+                </article>
+
+                <article>
+                  <h2>Empresa</h2>
+                  <p class="subDetails">October 2004 - December 2006</p>
+                  <ul>
+                    <li>{{ this.$store.getters.RegistrarCV.Exp_Empresa }}</li>
+                    <li>{{ this.$store.getters.RegistrarCV.Exp_Puesto }}</li>
+
+                    <li>{{ this.$store.getters.RegistrarCV.Exp_Salario }}</li>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Exp_Fecha_Inicio }}
+                    </li>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Exp_Fecha_Salida }}
+                    </li>
+                    <li>
+                      {{ this.$store.getters.RegistrarCV.Exp_Tel_Contacto }}
+                    </li>
+                    <li>{{ this.$store.getters.RegistrarCV.Exp_Funcion }}</li>
+                  </ul>
+                </article>
+              </div>
+              <div class="clear"></div>
+            </section>
+
+            <section>
+              <div class="sectionTitle">
+                <h1>Cursos</h1>
+              </div>
+
+              <div class="sectionContent">
+                <ul>
+                  <li>{{ this.$store.getters.RegistrarCV.Curso_Tipo }}</li>
+                  <li>{{ this.$store.getters.RegistrarCV.Curso_Titulo }}</li>
+
+                  <li>{{ this.$store.getters.RegistrarCV.Curso_Fecha }}</li>
+                  <li>{{ this.$store.getters.RegistrarCV.Curso_Medio }}</li>
+                  <li>{{ this.$store.getters.RegistrarCV.Sector_1 }}</li>
+                  <li>{{ this.$store.getters.RegistrarCV.Sector_2 }}</li>
+                  <li>{{ this.$store.getters.RegistrarCV.Sector_3 }}</li>
+                </ul>
+              </div>
+              <div class="clear"></div>
+            </section>
+
+            <section>
+              <div class="sectionTitle">
+                <h1>Education</h1>
+              </div>
+
+              <div class="sectionContent">
+                <article>
+                  <h2>AREAS</h2>
+                  <p class="subDetails">Qualification</p>
+                  <ul>
+                    <li>{{ this.$store.getters.RegistrarCV.Area_1 }}</li>
+                    <li>{{ this.$store.getters.RegistrarCV.Area_2 }}</li>
+                    <li>{{ this.$store.getters.RegistrarCV.Area_3 }}</li>
+                  </ul>
+                </article>
+              </div>
+              <div class="clear"></div>
+            </section>
+          </div>
         </div>
-      </div>
-    </v-row>
-  </v-col>
-</div>
+      </v-row>
+    </v-col>
+  </div>
 </template>
 
 <script>
