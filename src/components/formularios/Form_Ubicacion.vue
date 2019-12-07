@@ -5,19 +5,19 @@
         <form>
           <v-container>
             <v-row align="center">
-              <v-col class="d-flex" cols="6" md="8">
+              <v-col class="d-flex" cols="6" md="10">
                 <v-text-field v-model="cp" label="Código Postal"></v-text-field>
               </v-col>
-              <v-col class="d-flex" cols="6" md="4">
+              <v-col class="d-flex" cols="6" md="2">
                 <v-btn @click="buscarUbicacion(cp)">Validar</v-btn>
               </v-col>
             </v-row>
             <v-row justify="center">
               <v-col class="d-flex" cols="6" md="6">
-                <h5>{{estado}}</h5>
+                <h7> Estado:{{estado}}</h7>
               </v-col>
               <v-col class="d-flex" cols="6" md="6">
-                <h5>{{municipio}}</h5>
+                <h7>Municipio:{{municipio}}</h7>
               </v-col>
             </v-row>
           </v-container>

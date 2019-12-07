@@ -1,6 +1,6 @@
 <template>
   <v-container style="height: 1000px">
-    <v-stepper v-model="e1" alt-labels>
+    <v-stepper  v-model="e1" alt-labels>
       <v-stepper-header>
         <template v-for="(paso, n) in pasos">
           <v-col
@@ -12,6 +12,7 @@
             class="text-center"
           >
             <v-stepper-step
+            editable
               :key="`${n}-step`"
               :complete="e1 > n + 1"
               :step="paso.id_paso"

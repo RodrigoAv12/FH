@@ -103,6 +103,7 @@ export default {
       estudio_estado: "",
       estudio_pais: "",
       estudio_fecha: "",
+      cedula:"",
       el: "#example",
       checkbox: 3,
       checkbox_uni: 2
@@ -116,7 +117,8 @@ export default {
         estudio_ciudad: this.estudio_ciudad,
         estudio_estado: this.estudio_estado,
         estudio_pais: this.estudio_pais,
-        estudio_fecha: this.estudio_fecha
+        estudio_fecha: this.estudio_fecha,
+        cedula:this.cedula
       };
       this.$store.dispatch("agregarFormacion", formacion);
     },
