@@ -101,6 +101,21 @@
                   :rules="contactoRules"
                 ></v-text-field>
               </v-col>
+              <v-col md="12">
+      <v-textarea
+      v-model="exp_funcion"
+      :disabled="disabled"
+        :rules="rules"
+        name="input-7-1"
+        filled
+        label="Describe tu función en la empresa"
+        auto-grow
+        counter="250"
+        maxlength="250"
+        outlined
+        height="200"
+      ></v-textarea>
+    </v-col>
             </v-row>
           </v-form>
           <!------------Fin Formulario--------------->
@@ -171,6 +186,7 @@ export default {
         this.salario = "";
         this.date = "";
         this.contacto = "";
+        this.exp_funcion= ""
       } else {
         this.disabled = false;
       }

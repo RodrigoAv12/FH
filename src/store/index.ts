@@ -49,6 +49,12 @@ export default new Vuex.Store({
       Area_1:'',
       Area_2:'',
       Area_3:'',
+      Software_1:'',
+      Software_2:'',
+      Software_3:'',
+      Habilidad_1:'',
+      Habilidad_2:'',
+      Habilidad_3:'',
     },
   },
   mutations: {
@@ -66,21 +72,18 @@ export default new Vuex.Store({
       console.log(state.CV.Fecha_Nacimiento);
     },
     agregarUbicacion(state, ubicacion){
-      
       state.CV.Estado = ubicacion.estado
       state.CV.Municipio = ubicacion.municipio
       state.CV.CP = ubicacion.cp
       console.log(state.CV.Estado);
       console.log(state.CV.Municipio);
       console.log(state.CV.CP);
-      
     },
     agregarSocial(state, social){
       state.CV.Facebook = social.facebook
       state.CV.Linkedin = social.linkedin
       console.log(state.CV.Facebook);
       console.log(state.CV.Linkedin);
-      
     },
     agregarPerfilProfesional(state, perfil_pro){
       state.CV.Perfil_Profesional = perfil_pro.perfil

@@ -37,20 +37,19 @@ export default {
       campos: [],
     };
   },
-  created(){}
+  created(){
     
-  ,
+  },
   methods: {
     RegistrarCV() {
       this.axios
         .post("/registroCV", this.$store.getters.RegistrarCV)
         .then(result => {
-          this.campos.push(result.data);
+          console.log("Si llegó");
         })
         .catch(err => {
           console.log(err.response);
         });
-     
     }
   }
 };
