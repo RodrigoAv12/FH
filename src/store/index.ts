@@ -209,7 +209,6 @@ export default new Vuex.Store({
     agregarDatosPersonales(context, datos_personales){
       context.commit('agregarDatosPersonales', datos_personales)
       console.log('DatosPersonales');
-      
     },
     agregarUbicacion(context, ubicacion){
       context.commit('agregarUbicacion', ubicacion)

@@ -3,7 +3,6 @@
     <div>
       <Carusel></Carusel>
       <br />
-      <v-divider style="margin-left:250px;margin-right:250px"></v-divider>
       <Pasos></Pasos>
       <EstrellasEmpresa></EstrellasEmpresa>
       <CaruselEmpresas></CaruselEmpresas>
@@ -26,6 +25,7 @@ import Carusel from "@/components/Main_Secciones/Carusel.vue";
 import Pasos from "@/components/Main_Secciones/Pasos.vue";
 import CaruselEmpresas from "@/components/Main_Secciones/CaruselEmpresas.vue";
 
+
 export default {
   name: "inicio",
   components: {
@@ -38,4 +38,3 @@ export default {
   }
 };
 </script>
-

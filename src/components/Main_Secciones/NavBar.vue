@@ -85,6 +85,7 @@ import RegistroCV from "@/views/RegistroCV";
 import Inicio from "@/views/Inicio";
 import About from "@/views/About";
 import NavegadorUsuario from "@/views/NavegadorUsuario";
+import PE from "@/views/PerfilesEmpresaV";
 
 export default {
   components: {
@@ -111,6 +112,26 @@ export default {
           id: 1,
           text: "Registrarse",
           page: "/RegistroUsuario"
+        },
+        {
+          id: 2,
+          text: "Empresa",
+          page: "/perfil_empresa"
+        },
+        {
+          id: 3,
+          text: "Vista Datos",
+          page: "/vista_datos"
+        },
+        {
+          id: 4,
+          text: "Registra Datos",
+          page: "/registra_datos"
+        },
+        {
+          id: 5,
+          text: "Contactos",
+          page: "/contactos"
         }
       ]
     };
