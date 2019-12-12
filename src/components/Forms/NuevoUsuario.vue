@@ -97,7 +97,9 @@ export default {
   }
 };
 </script>
+
 <style  scoped>
+
 .modal-header {
     border-bottom: 0 none;
 }
@@ -105,4 +107,5 @@ export default {
 .modal-footer {
     border-top: 0 none;
 }
+
 </style>
