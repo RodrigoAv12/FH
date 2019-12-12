@@ -11,9 +11,9 @@
       </v-col>
       <v-col class="d-flex pa-2" cols="12" sm="6" lg="6">
         <v-text-field
-          v-model="linkedin"
-          prepend-icon="fab fa-linkedin"
-          label="linkedin"
+          v-model="twitter"
+          prepend-icon="fab fa-twitter"
+          label="Twitter"
           required
         ></v-text-field>
       </v-col>
@@ -48,14 +48,14 @@ export default {
   data(){
     return{
       facebook:'',
-      linkedin:''
+      twitter:''
     }
   },
   methods:{
     agregarSocial() {
       var redes = {
         facebook: this.facebook,
-        linkedin: this.linkedin,
+        twitter: this.twitter
         
       };
       this.$store.dispatch("agregarSocial", redes);

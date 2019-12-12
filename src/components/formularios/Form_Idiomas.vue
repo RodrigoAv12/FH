@@ -121,7 +121,7 @@ export default {
     el: "#idioma",
     c: 1,
     nivel: ["A1", "A2", "B1", "B2", "C1", "C2"],
-    idiomas: ["Español", "Inglés", "Alemán", "Frances"],
+    idiomas: ["Español", "Inglés", "Alemán", "Frances","Japones","Chino","Italiano"],
     idioma_principal: "",
     idiomas_secundarios: ["idioma_1", "idioma_1", "idioma_1"],
     niveles: ["idioma_nivel_1", "idioma_nivel_2", "idioma_nivel_3"],
