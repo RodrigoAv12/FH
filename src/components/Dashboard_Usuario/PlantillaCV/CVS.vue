@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-
-
-    <v-card class="ma-3 " outlined tile max-width="800">
-
+    <v-card class="ma-3 pa-6" outlined tile max-width="800">
       <v-row align="center" justify="center">
         Escoje una de las opciones para tus CV
       </v-row>

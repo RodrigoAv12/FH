@@ -23,18 +23,9 @@
               <ul>
                 <li>
                   Correo
-<<<<<<< Updated upstream
                   <a>{{ this.$store.getters.RegistrarCV.Correo }}</a>
                 </li>
                 <li>{{ this.$store.getters.RegistrarCV.Tel }}</li>
-=======
-                  {{ this.$store.getters.RegistrarCV.Correo }}
-                </li>
-
-                <li>
-                    {{ this.$store.getters.RegistrarCV.Tel }} 
-                  </li>
->>>>>>> Stashed changes
                 <li>{{ this.$store.getters.RegistrarCV.Fecha_Nacimiento }}</li>
                 <li>{{ this.$store.getters.RegistrarCV.Curp }}</li>
                 <li>{{ this.$store.getters.RegistrarCV.Pais }}</li>
@@ -76,17 +67,10 @@
 
                   <ul>
                     <li>
-<<<<<<< Updated upstream
                       Correo
                       <a>{{
                         this.$store.getters.RegistrarCV.Idioma_Principal
                       }}</a>
-=======
-                    
-                      {{
-                        this.$store.getters.RegistrarCV.Idioma_Principal
-                      }}
->>>>>>> Stashed changes
                     </li>
                     <li>{{ this.$store.getters.RegistrarCV.Idioma_1 }}</li>
                     <li>

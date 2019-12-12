@@ -349,6 +349,44 @@
 export default {
   data: () => ({
     valid: true,
+    name: "",
+    nameRules: [
+      v => !!v || "Ingresa Texto",
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+    mision: "",
+    misionRules: [
+      v => !!v || "Ingresa Texto",
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+
+    vision: "",
+    visionRules: [
+      v => !!v || "Ingresa Texto",
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+
+    valor1: "",
+    valor1Rules: [
+      v => !!v,
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+    valor2: "",
+    valor2Rules: [
+      v => !!v,
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+
+    valor3: "",
+    valor3Rules: [
+      v => !!v,
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
+    valor4: "",
+    valor4Rules: [
+      v => !!v,
+      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
+    ],
 
     pagina: "",
     paginaRules: [
@@ -356,77 +394,7 @@ export default {
       v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
     ],
 
-    nombreL: "",
-    nombreRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-    nombreCom: "",
-    nombreComRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-    RFC: "",
-    RFCRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-    Domicilio: "",
-    DomicilioRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-    Referencia: "",
-    referenciaRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-    Ciudad : "",
-    ciudadRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-    Estado: "",
-    estadoRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-    Pais: "",
-    paisRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-    CP: "",
-    cpRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-    Giro: "",
-    giroRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-    Trabajadores: "",
-    trabajadoresRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-    Sucursal: "",
-    sucursalRules: [
-      v => !!v,
-      v => (v && v.length <= 100) || "Porfavor ingresa una descripcion"
-    ],
-
-
-    checkbox: false ,
+    checkbox: false,
     si: false,
     no: false,
     si1: false,

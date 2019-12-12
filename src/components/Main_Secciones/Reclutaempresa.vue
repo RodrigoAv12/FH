@@ -1,7 +1,7 @@
 <template>
 
-  <div style="height: 250px; justify: center;"><br><br>
-    <v-container ><br>
+  <div style="height: 250px; justify: center;">
+    <v-container >
       <v-row align="center" justify="center">
         <h1 style="font-family: 'Montserrat', sans-serif;" class="text-center">
           Registra tu empresa y recluta desde la comodidad de tu hogar u oficina.
