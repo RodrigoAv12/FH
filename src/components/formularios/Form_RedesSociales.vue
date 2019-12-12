@@ -4,7 +4,12 @@
     <v-row class="pa-2" align="center" justify="center">
       <v-col class="d-flex pa-2" cols="12" sm="6" lg="6">
         <v-text-field
+<<<<<<< Updated upstream
           v-model="facebook"
+=======
+          v-model="nombre"
+          :error-messages="nameErrors"
+>>>>>>> Stashed changes
           prepend-icon="fab fa-facebook"
           label="Facebook"
         ></v-text-field>
@@ -15,6 +20,22 @@
           prepend-icon="fab fa-linkedin"
           label="linkedin"
           required
+<<<<<<< Updated upstream
+=======
+          @input="$v.name.$touch()"
+          @blur="$v.name.$touch()"
+        ></v-text-field>
+      </v-col>
+      <v-col class="d-flex pa-2" cols="12" sm="6" lg="6">
+        <v-text-field
+          v-model="nombre"
+          :error-messages="nameErrors"
+          label="LinkedIn"
+          prepend-icon="fab fa-linkedin"
+          required
+          @input="$v.name.$touch()"
+          @blur="$v.name.$touch()"
+>>>>>>> Stashed changes
         ></v-text-field>
       </v-col>
       

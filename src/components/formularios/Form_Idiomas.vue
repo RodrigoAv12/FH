@@ -14,14 +14,23 @@
           </v-col>
         </v-row>
         <v-row>
+          
           <v-col md="12" cols="12" justify-self="center" align-self="center">
             <v-row justify="center">
               <v-col class="d-flex" cols="12" md="6">
+<<<<<<< Updated upstream
                 <v-select
                   :items="idiomas"
                   label="Idioma"
                   v-model="idioma_1"
                 ></v-select>
+=======
+<<<<<<< Updated upstream
+                <v-select :items="idiomas" label="Idioma" v-model="idioma_1"></v-select>
+=======
+                <v-select :items="idiomas" label="Idioma Adicional"></v-select>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
               </v-col>
               <v-col class="d-flex" cols="12" md="6">
                 <v-select

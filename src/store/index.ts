@@ -1,6 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import { RouterLinkStub } from '@vue/test-utils';
+
+
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
@@ -66,6 +69,7 @@ export default new Vuex.Store({
       Habilidad_3:'',
     },
   },
+
   mutations: {
     agregarDatosPersonales(state, datos_personales){
       state.CV.Nombre = datos_personales.nombre
@@ -251,4 +255,7 @@ export default new Vuex.Store({
     }
   },
   modules: {}
+
+
+  
 });

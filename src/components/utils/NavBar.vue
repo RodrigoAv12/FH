@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-<template>
 
-</template>
 
-=======
 <template>
   <div style="width:100%" >
     <nav class="navbar navbar-expand-lg navbar-light grey darken-3">
@@ -94,7 +90,7 @@ export default {
         {
           id: 10,
           text: "Solicitudes",
-          page: "/SolicitudView"
+          page: "/NavegadorUsuario"
         },
         {
           id: 11,
@@ -107,4 +103,3 @@ export default {
   }
 };
 </script>
->>>>>>> 6989abd... El chido
