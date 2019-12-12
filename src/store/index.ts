@@ -1,6 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import { RouterLinkStub } from '@vue/test-utils';
+
+
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
@@ -17,7 +20,7 @@ export default new Vuex.Store({
       Municipio:'',
       CP:'',
       Facebook:'',
-      Twitter:'',
+      Linkedin:'',
       Perfil_Profesional:'',
       Idioma_Principal:'',
       Idioma_1:'',
@@ -66,6 +69,7 @@ export default new Vuex.Store({
       Habilidad_3:'',
     },
   },
+
   mutations: {
     agregarDatosPersonales(state, datos_personales){
       state.CV.Nombre = datos_personales.nombre
@@ -90,9 +94,9 @@ export default new Vuex.Store({
     },
     agregarSocial(state, social){
       state.CV.Facebook = social.facebook
-      state.CV.Twitter = social.twitter
+      state.CV.Linkedin = social.linkedin
       console.log(state.CV.Facebook);
-      console.log(state.CV.Twitter);
+      console.log(state.CV.Linkedin);
     },
     agregarPerfilProfesional(state, perfil_pro){
       state.CV.Perfil_Profesional = perfil_pro.perfil
@@ -251,4 +255,7 @@ export default new Vuex.Store({
     }
   },
   modules: {}
+
+
+  
 });

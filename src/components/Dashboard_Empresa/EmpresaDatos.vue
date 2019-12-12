@@ -137,13 +137,6 @@
                   ></v-responsive>
                 </template>
               </v-row>
-
-
-
-
-
-
-
             </v-container>
           </div>
         </div>

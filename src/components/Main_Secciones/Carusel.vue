@@ -1,151 +1,106 @@
 <template>
-        
-        <section class="banner">
-		<div class="banner-content">
+  <header>
 
-			<form>
-        <h1>Buscar Empleo</h1>
-        <h6 style="font-family:'Montserrat', sans-serif;">¿Qué?</h6><br>
-        <v-text-field
-            label="Titulo, Palabra Clave o Empresa"
-            outlined
-            style="font-family:'Montserrat', sans-serif;"
-          ></v-text-field>
-        <h6 style="font-family:'Montserrat', sans-serif;">Gerente, Mercadotecnia, Compras, Ingeniero</h6><br>
-        <h6 style="font-family:'Montserrat', sans-serif;">¿Donde?</h6><br>
-        <v-text-field
-            label="Titulo, Palabra Clave o Empresa"
-            outlined
-            style="font-family:'Montserrat', sans-serif;"
-          ></v-text-field>
-        <h6 style="font-family:'Montserrat', sans-serif;">DF, Estado de México, Nuevo León, Jalisco</h6>
-        <v-btn depressed large rounded block color="secondary" style="margin-top:30px; font-family: 'Montserrat', sans-serif;"
-                  >Buscar Empleo</v-btn
-                >
-			</form>
-		</div>
-	</section>
-        
+    <div class="absolute">
+      <Principal/>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators" style="padding-bottom: 50px ">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div
+          class="carousel-item active"
+          style="background-image: url('https://picsum.photos/id/201/5184/3456')"
+        >
+          <div class="carousel-caption d-none d-block" style="margin-bottom: 100px">
+            <h2 class="display-4 text-color-black">Quality is more than making a good product</h2>
+          </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div
+          class="carousel-item"
+          style="background-image: url('https://picsum.photos/id/885/4000/2667')"
+        >
+          <div class="carousel-caption d-none d-block" style="margin-bottom: 100px">
+            <h2 class="display-4">Certification Courses</h2>
+            <p class="lead">This is a description.</p>
+            <button type="submit" class="btn btn-dark" style="margin-top: 10px">
+              <h4>Get Started</h4>
+            </button>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true" style="padding-bottom: 50px"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header>
 </template>
 
-<style scoped>
-form{
-			background-color: white;
-			border-radius: 3px;
-			color: #000;
-			font-size: 0.8em;
-			padding: 20px;
-      margin-right: 600px;
-      height: 550px;
-			width: 500px;
-		}
-.banner{
-	position: relative;
-	width: 100%;
-	height: calc(100vh - 50px);
-	background-color: #F5F5F5;
-	background-size: cover;
-	background-position: center;
-	transition: all .1s ease-out;
-	background-image: url('https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80');
-	animation: banner 28s infinite linear;
-}
-.banner-content{
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 100%;
-	color: #FFF;
-	background-color: rgba(0, 22, 40, .6);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-.banner-content h1{
-	margin: 0;
-	padding: 0;
-	padding-bottom: 30px;
-	font-size: 40px;
-	text-align: center;
-}
-.banner-content a{
-	text-decoration: none;
-	color: #FFF;
-	padding: 9px 20px;
-	border: 1px solid #FFF;
-	text-transform: uppercase;
-	transition: all .3s ease-in-out;
-}
-.banner-content a:hover{
-	background-color: #fff;
-	color: #333;
-}
-@media only screen and (max-width: 768px) {
-form{
-			background-color: white;
-			border-radius: 3px;
-			color: #000;
-			font-size: 0.8em;
-			padding: 20px;
-			margin: 0 auto;
-      		height: 550px;
-			width: 500px;
-}}
-@media only screen and (max-width: 900px) {
-form{
-			background-color: white;
-			border-radius: 3px;
-			color: #000;
-			font-size: 0.8em;
-			padding: 20px;
-			margin: 0 auto;
-      		height: 550px;
-			width: 500px;
-}}
-@media only screen and (max-width: 1264px) {
-form{
-			background-color: white;
-			border-radius: 3px;
-			color: #000;
-			font-size: 0.8em;
-			padding: 20px;
-			margin: 0 auto;
-      		height: 550px;
-			width: 500px;
-}}
-
-@keyframes banner{
-	0%{
-		background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-	}
-	25%{
-		background-image: url('https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-	}
-
-
-	26%{
-		background-image: url('https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=924&q=80');
-	}
-	50%{
-		background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-	}
-
-
-	51%{
-		background-image: url('https://images.unsplash.com/photo-1496902526517-c0f2cb8fdb6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-	}
-	75%{
-		background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1413&q=80');
-	}
-	
-
-	76%{
-		background-image: url('https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-	}
-	100%{
-		background-image: url('https://images.unsplash.com/photo-1530971013997-e06bb52a2372?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=986&q=80');
-	}
-
+<script>
+import Principal from "@/components/Main_Secciones/Principal.vue";
+export default {
+  components:{
+    Principal
+  },
+  data() {
+    return {
+      items: [
+        {
+          src:
+            "https://i.ibb.co/8DpVGxP/marten-bjork-6d-W3xy-Qvc-YE-unsplash.jpg",
+          boton: "Registrarme",
+          page: "/RegistroUsuario",
+          alineacionbtn: "margin-top:250px; margin-left:30px"
+        },
+        {
+          src: "https://i.ibb.co/Cz13PyQ/h.jpg",
+          boton: "Servicios Empresariales",
+          alineacionbtn: "margin-top:250px; margin-left:50px"
+        },
+        {
+          src: "https://i.ibb.co/vsx4wTg/sh.jpg",
+          boton: "Promociones",
+          alineacionbtn: "margin-top:250px; margin-left:30px"
+        },
+        {
+          src: "https://i.ibb.co/6n5bGsB/marten-bjork-unsplash.jpg",
+          boton: "Nosotros",
+          alineacionbtn: "margin-top:250px; margin-left:30px"
+        }
+      ]
+    };
+  }
+};
+</script>
+<style  scoped>
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 </style>

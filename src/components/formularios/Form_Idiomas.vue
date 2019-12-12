@@ -14,14 +14,23 @@
           </v-col>
         </v-row>
         <v-row>
+          
           <v-col md="12" cols="12" justify-self="center" align-self="center">
             <v-row justify="center">
               <v-col class="d-flex" cols="12" md="6">
+<<<<<<< Updated upstream
                 <v-select
                   :items="idiomas"
                   label="Idioma"
                   v-model="idioma_1"
                 ></v-select>
+=======
+<<<<<<< Updated upstream
+                <v-select :items="idiomas" label="Idioma" v-model="idioma_1"></v-select>
+=======
+                <v-select :items="idiomas" label="Idioma Adicional"></v-select>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
               </v-col>
               <v-col class="d-flex" cols="12" md="6">
                 <v-select
@@ -121,7 +130,7 @@ export default {
     el: "#idioma",
     c: 1,
     nivel: ["A1", "A2", "B1", "B2", "C1", "C2"],
-    idiomas: ["Español", "Inglés", "Alemán", "Frances","Japones","Chino","Italiano"],
+    idiomas: ["Español", "Inglés", "Alemán", "Frances"],
     idioma_principal: "",
     idiomas_secundarios: ["idioma_1", "idioma_1", "idioma_1"],
     niveles: ["idioma_nivel_1", "idioma_nivel_2", "idioma_nivel_3"],
