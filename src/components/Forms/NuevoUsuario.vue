@@ -26,9 +26,6 @@
               <v-text-field outlined v-model="usuario.apellido_m" label="Apellido Materno" required></v-text-field>
             </v-col>
           </v-row>
-
-          
-
           <!-- E-mail -->
           <v-text-field outlined v-model="usuario.correo" label="Correo Electrónico" required></v-text-field>
           <!-- Confirmar E-mail -->
@@ -42,19 +39,19 @@
           <button class="btn btn-primary my-4 btn-block" type="submit">Aceptar</button>
           <!-- Terms of service -->
           <p>
-            Already have an account?
+            ¿Ya tienes una cuenta?
             <a
               href="#"
               data-dismiss="modal"
               data-toggle="modal"
               data-target="#modalIniciarSesion"
-            >Log in</a>
+            >Iniciar Sesión</a>
           </p>
           <hr />
           <small>
-            You accept our
-            <a href target="_blank">terms and conditions</a>
-            after signing in
+            Al registrarte aceptas los
+            <a href target="_blank">terminos de uso y condiciones</a>
+            de factor humano
           </small>
         </div>
       </form>

@@ -74,7 +74,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ContactosV.vue")
   },
-  
 ];
 
 

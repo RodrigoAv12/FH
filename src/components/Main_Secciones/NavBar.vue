@@ -1,12 +1,12 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="nav">
+    <nav class="navbar navbar-expand-lg  fixed-top" id="nav">
       <div class="container-fluid">
         <a class="navbar-brand js-scroll-trigger" href="Index.html">
           <img
             class="main-logo"
             style="height: 50px; width: 50px; margin-top: -90px; margin-bottom: -85px;"
-            src="@/assets/logo.png"
+            src="@/assets/Logo.png"
             alt
           />
         </a>
@@ -24,34 +24,59 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto" style="align-self: flex-end">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" style="color: black" href="#about">About us</a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="inicio_sesion !== true">
               <a
                 class="nav-link js-scroll-trigger"
                 style="color: black"
                 href="#"
                 data-toggle="modal"
                 data-target="#modalIniciarSesion"
-              >Log in</a>
+                >Iniciar Sesión</a
+              >
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="inicio_sesion !== true">
               <a
                 class="nav-link js-scroll-trigger"
                 style="color: black"
                 href="#"
                 data-toggle="modal"
                 data-target="#myModal"
-              >Sign in</a>
+                >Registro</a
+              >
             </li>
+            <li class="nav-item dropdown"  v-if="inicio_sesion === true">
+              <a
+              style="color: black"
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Mi cuenta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <router-link
+                  class="nav-item nav-link "
+                  style="color: black"
+                  v-for="menu in menus"
+                  v-bind:key="menu.id"
+                  :to="`${menu.page}`"
+                  >{{ menu.text }}</router-link
+                >
+              </div>
+            </li>
+
             <router-link
               class="nav-item nav-link js-scroll-trigger"
               style="color: black"
               v-for="routes in links"
               v-bind:key="routes.id"
               :to="`${routes.page}`"
-            >{{ routes.text }}</router-link>
+              >{{ routes.text }}</router-link
+            >
           </ul>
         </div>
       </div>
@@ -65,7 +90,9 @@
             <!-- Modal Header -->
             <div class="modal-header text-center">
               <h4 class="modal-title w-100 register-title">Log in</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
@@ -89,12 +116,15 @@
                 />
 
                 <!-- Botón de Inicio de Sesión -->
-                <div class="checkbox" style="margin-bottom: -5%; margin-top: -2%">
-                  <label>
-                    <input type="checkbox" /> Remember me
-                  </label>
+                <div
+                  class="checkbox"
+                  style="margin-bottom: -5%; margin-top: -2%"
+                >
+                  <label> <input type="checkbox" /> Remember me </label>
                 </div>
-                <button class="btn btn-primary my-4 btn-block" type="submit">Log in</button>
+                <button class="btn btn-primary my-4 btn-block" type="submit">
+                  Log in
+                </button>
                 <!-- Terms of service -->
                 <p>
                   <a href target="_blank">Forgot my password</a>
@@ -139,8 +169,8 @@ export default {
       dialog: false,
       brand: "Barra de Navegacion",
       menus: [
-        { titulo: "Registrar CV", page: "/registro_cv" },
-        { titulo: "Mi perfil", page: "/navegador_usuario" }
+        { id: 0, titulo: "Registrar CV", page: "/registro_cv" },
+        { id: 1, titulo: "Mi perfil", page: "/navegador_usuario" }
       ],
       links: [
         {
@@ -178,12 +208,8 @@ export default {
 </script>
 <style scoped>
 .navbar {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-@media only screen and (max-width: 768px) {
-  .navbar {
-    background-color: #1c2331;
-  }
-}
+
 </style>

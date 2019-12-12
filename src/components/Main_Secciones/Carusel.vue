@@ -1,5 +1,10 @@
 <template>
   <header>
+
+    <div class="absolute">
+      <Principal/>
+    </div>
+
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators" style="padding-bottom: 50px ">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -53,7 +58,11 @@
 </template>
 
 <script>
+import Principal from "@/components/Main_Secciones/Principal.vue";
 export default {
+  components:{
+    Principal
+  },
   data() {
     return {
       items: [
