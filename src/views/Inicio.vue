@@ -3,7 +3,6 @@
     <div>
       <Carusel></Carusel>
       <br />
-      <v-divider style="margin-left:250px;margin-right:250px"></v-divider>
       <Pasos></Pasos>
       <EstrellasEmpresa></EstrellasEmpresa>
       <CaruselEmpresas></CaruselEmpresas>
@@ -17,6 +16,8 @@
     </div>
   </v-app>
 </template>
+
+
 
 <script>
 import Principal from "@/components/Main_Secciones/Principal.vue";
@@ -38,4 +39,3 @@ export default {
   }
 };
 </script>
-

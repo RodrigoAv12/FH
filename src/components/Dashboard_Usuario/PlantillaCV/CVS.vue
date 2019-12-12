@@ -5,7 +5,8 @@
         Escoje una de las opciones para tus CV
       </v-row>
       <hr />
-      <v-row>
+
+      <v-row v-show="plantilla === false">
         <v-col cols="6" sm="6" md="6" v-for="(item, n) in items" :key="n">
           <v-card class="mx-auto" max-width="500" color="purlple">
             <v-img
@@ -16,22 +17,20 @@
             >
             </v-img>
             <v-card-actions>
-              <v-btn
-                @click="cambiarComp(item.componente)"
-                text
-                v-on:click="show = !show"
-              >
-                {{ item.title }}
+              <v-btn @click="cambiarComp(item.componente),plantilla=true" text>
+                {{item.title}}
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
+
       <br />
     </v-card>
 
     <v-content>
-      <v-container fluid>
+      <v-container fluid v-if="plantilla === true">
+        <v-btn light @click="plantilla = false">Regresar</v-btn>
         <keep-alive>
           <component v-bind:is="componenteA"></component>
         </keep-alive>
@@ -61,6 +60,7 @@ export default {
 
   data() {
     return {
+      plantilla:false,
       drawer: true,
       componenteA: "",
       items: [

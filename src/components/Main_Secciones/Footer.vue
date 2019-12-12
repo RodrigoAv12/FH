@@ -1,70 +1,125 @@
 <template>
-  <v-row justify="center" >
-    <v-card height="200px" width="100%">
-        <v-card color="grey darken-3" width="100%" class="text-center">
-          <v-card-text >
-            <v-row justify="center">
-            <h3 style="color:white" >Personas</h3>
-            <h3 style="margin-left:180px;color:white">Empresas</h3>
-            <h3 style="margin-left:180px;color:white">Servicios</h3>
-            <h3 style="margin-left:180px;color:white">Ayuda</h3>
-            <h3 style="margin-left:180px;color:white">Redes Sociales</h3>
-            </v-row>
-            <v-row>
-              <v-divider style="margin-top:-5px;margin-left:80px;margin-right:1310px;"></v-divider>
-              <v-divider style="margin-top:-17px;margin-left:360px;margin-right:990px"></v-divider>
-              <v-divider style="margin-top:-17px;margin-left:660px;margin-right:690px"></v-divider>
-              <v-divider style="margin-top:-17px;margin-left:980px;margin-right:450px"></v-divider>
-              <v-divider style="margin-top:-17px;margin-left:1230px;margin-right:70px"></v-divider>
-            </v-row>
-            <v-row >
-              <v-col style="margin-left:30px" md="2">
-                <a style="color:white;" v-for="item in personas" :key="item" :href="item.link">
-              <h6 >{{ item.titulo }} </h6>
-                </a>
-              </v-col>
-              <v-col style="margin-left:45px" md="2">
-                <a style="color:white" v-for="item in empresas" :key="item" :href="item.link">
-              <h6 >{{ item.titulo }} </h6>
-                </a>
-              </v-col>
-              <v-col style="margin-left:40px" md="2">
-                <a style="color:white" v-for="item in servicios" :key="item" :href="item.link">
-              <h6 >{{ item.titulo }} </h6>
-                </a>
-              </v-col>
-              <v-col style="margin-left:20px" md="2">
-                <a style="color:white" v-for="item in ayuda" :key="item" :href="item.link">
-              <h6 >{{ item.titulo }} </h6>
-                </a>
-              </v-col>
-              <v-col style="margin-left:60px" md="2">
-                <a style="color:white" v-for="item in redes" :key="item" :href="item.link">
-                  <h6 >{{ item.titulo }} </h6>
-                </a>
-              </v-col>
-            </v-row>
-          </v-card-text>
-          <v-divider></v-divider>
-          <v-card-text class="white--text">
-            {{ new Date().getFullYear() }} — <strong>Factor Humano</strong>
-          </v-card-text>
+<v-card style="background-color: #424242;">
+  <v-container>
+<v-row no-gutters>
+      <v-col
+            cols="12"
+            sm="2"
+            >
+              <v-card
+              class="ma-3 pa-6"
+              color="#424242"
+              outlined
+              tile
+              >
+              <v-row justify="center">
+                <div style="color:white; font-size:25px; font-family:'Montserrat', sans-serif;" >Personas</div>
+                  </v-row>
+                <v-row justify="center">
+                <v-col cols="5"
+            sm="12">
+                <div v-for="item in personas" :key="item"  style="color:white; font-size:15px; font-family:'Montserrat', sans-serif;" >{{item.titulo}}</div>
+                </v-col>
+                </v-row>     
         </v-card>
-    </v-card>
-  </v-row>
-
+      </v-col>
+      <v-col
+            cols="12"
+            sm="3"
+            >
+              <v-card
+              class="ma-3 pa-6"
+              color="#424242"
+              outlined
+              tile
+              >
+              <v-row justify="center">
+                <div style="color:white; font-size:25px; font-family:'Montserrat', sans-serif;" >Empresas</div>
+                  </v-row>
+                <v-row justify="center">
+                <v-col cols="4"
+            sm="8">
+                <div v-for="item in empresas" :key="item"  style="color:white; font-size:15px; font-family:'Montserrat', sans-serif;" >{{item.titulo}}</div>
+                </v-col>
+                </v-row>     
+        </v-card>
+      </v-col>
+      <v-col
+            cols="12"
+            sm="2"
+            >
+              <v-card
+              class="ma-3 pa-6"
+              color="#424242"
+              outlined
+              tile
+              >
+              <v-row justify="center">
+                <div style="color:white; font-size:25px; font-family:'Montserrat', sans-serif;" >Servicios</div>
+                  </v-row>
+                <v-row justify="center">
+                <v-col cols="6"
+            sm="12">
+                <div v-for="item in servicios" :key="item"  style="color:white; font-size:15px; font-family:'Montserrat', sans-serif;" >{{item.titulo}}</div>
+                </v-col>
+                </v-row>     
+        </v-card>
+      </v-col>
+      <v-col
+            cols="12"
+            sm="2"
+            >
+              <v-card
+              class="ma-3 pa-6"
+              color="#424242"
+              outlined
+              tile
+              >
+              <v-row justify="center">
+                <div style="color:white; font-size:25px; font-family:'Montserrat', sans-serif;" >Ayuda</div>
+                  </v-row>
+                <v-row justify="center">
+                <v-col cols="4"
+            sm="9">
+                <div v-for="item in ayuda" :key="item"  style="color:white; font-size:15px; font-family:'Montserrat', sans-serif;" >{{item.titulo}}</div>
+                </v-col>
+                </v-row>     
+        </v-card>
+      </v-col>
+      <v-col
+            cols="12"
+            sm="2"
+            >
+              <v-card
+              class="ma-3 pa-6"
+              color="#424242"
+              outlined
+              tile
+              >
+              <v-row justify="center">
+                <div style="color:white; font-size:25px; font-family:'Montserrat', sans-serif;" >Social</div>
+                  </v-row>
+                <v-row justify="center">
+                <v-col cols="4"
+            sm="9">
+                <div v-for="item in redes" :key="item"  style="color:white; font-size:15px; font-family:'Montserrat', sans-serif;" >{{item.titulo}}</div>
+                </v-col>
+                </v-row>     
+        </v-card>
+      </v-col>
+          </v-row>
+          
+    </v-container>
+</v-card>
 </template>
 
-
 <script>
-
   export default {
     data () {
       return {
-        n:0,
-        personas: [
+          personas: [
           {
-          titulo: "Registrar CV",
+          titulo: "Registrar mi CV",
           link:""
           },
           {
@@ -77,10 +132,6 @@
           },
           {
           titulo: "Perfil del Candidato",
-          link:""
-          },
-          {
-          titulo: "Desarrollo Profesional",
           link:""
           },
           {

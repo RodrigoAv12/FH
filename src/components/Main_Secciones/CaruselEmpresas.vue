@@ -92,7 +92,6 @@
     </v-carousel-item>
   </v-carousel>
             <v-row style="margin-top:20px"></v-row>
-              <v-divider  style="margin-left:250px;margin-right:250px"></v-divider><br>
 </div>
 </template>
 

@@ -4,8 +4,14 @@
       <v-col md="8">
         <v-form ref="form" lazy-validation>
           <v-text-field v-model="nombre" label="Nombre"></v-text-field>
-          <v-text-field v-model="apellido_paterno" label="Apellido Paterno"></v-text-field>
-          <v-text-field v-model="apellido_materno" label="Apellido Materno"></v-text-field>
+          <v-text-field
+            v-model="apellido_paterno"
+            label="Apellido Paterno"
+          ></v-text-field>
+          <v-text-field
+            v-model="apellido_materno"
+            label="Apellido Materno"
+          ></v-text-field>
           <v-row justify="center">
             <v-col md="6" cols="12">
               <v-menu
@@ -20,16 +26,21 @@
                   <v-text-field
                     v-model="fecha_nacimiento"
                     label="Fecha de nacimiento"
-                    
                     readonly
                     v-on="on"
                   ></v-text-field>
                 </template>
-                <v-date-picker v-model="fecha_nacimiento" @input="menu2 = false"></v-date-picker>
+                <v-date-picker
+                  v-model="fecha_nacimiento"
+                  @input="menu2 = false"
+                ></v-date-picker>
               </v-menu>
             </v-col>
             <v-col md="6" cols="12">
-              <v-text-field v-model="tel" label="Número Teléfono" ></v-text-field>
+              <v-text-field
+                v-model="tel"
+                label="Número Teléfono"
+              ></v-text-field>
             </v-col>
           </v-row>
           <v-text-field v-model="curp" label="Curp"></v-text-field>
@@ -39,12 +50,19 @@
         <v-row>
           <v-col md="12">
             <v-row align="center" justify="center">
-              <v-img aspect-ratio="1" class="grey lighten-2" max-width="500" max-height="300"></v-img>
+              <v-img
+                aspect-ratio="1"
+                class="grey lighten-2"
+                max-width="500"
+                max-height="300"
+              ></v-img>
             </v-row>
           </v-col>
           <v-col justify-self="center" style="margin-top:-20px">
             <v-row justify="center" class="pt-3">
-              <v-btn light @click.native="openFileDialog">Agregar Imagen de Perfil</v-btn>
+              <v-btn light @click.native="openFileDialog"
+                >Agregar Imagen de Perfil</v-btn
+              >
               <input
                 accept="image/x-png, image/gif, image/jpeg"
                 type="file"
@@ -63,7 +81,8 @@
         dark
         @click="agregarDatosPersonales(), siguiente(true)"
         style="margin-right:10px"
-      >Siguiente</v-btn>
+        >Siguiente</v-btn
+      >
     </v-row>
   </v-container>
 </template>
@@ -72,7 +91,6 @@
 export default {
   data() {
     return {
-      
       menu2: false,
       formData: new FormData(),
       rules: [
@@ -102,17 +120,6 @@ export default {
         curp: this.curp,
         tel: this.tel,
         fecha_nacimiento: this.fecha_nacimiento
-          .toString()
-          .substring(9, 10)
-          .concat(
-            "-" +
-              this.fecha_nacimiento
-                .toString()
-                .substring(4, 7)
-                .concat(
-                  "-" + this.fecha_nacimiento.toString().substring(11, 15)
-                )
-          )
       };
       this.$store.dispatch("agregarDatosPersonales", datos_personales);
     },

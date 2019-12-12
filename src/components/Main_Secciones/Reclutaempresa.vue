@@ -1,6 +1,6 @@
 <template>
 
-  <div style="height: 250px; justify: center;"><br>
+  <div style="height: 250px; justify: center;"><br><br>
     <v-container ><br>
       <v-row align="center" justify="center">
         <h1 style="font-family: 'Montserrat', sans-serif;" class="text-center">
@@ -13,6 +13,11 @@
         >
       </v-row>
     </v-container><br>
-      <v-divider  style="margin-left:250px;margin-right:250px"></v-divider>
   </div>
 </template>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+</style>

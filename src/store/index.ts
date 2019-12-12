@@ -27,8 +27,9 @@ export default new Vuex.Store({
       Idioma_3:'',
       Idioma_Nivel_3:'',
       Titulo_Estudios:'',
+      Cedula:'',
       Centro_Estudios:'',
-      Estudio_Municipio:'',
+      Estudio_Ciudad:'',
       Estudio_Estado:'',
       Estudio_Pais:'',
       Estudio_Fecha:'',
@@ -43,12 +44,26 @@ export default new Vuex.Store({
       Curso_Titulo:'',
       Curso_Fecha:'',
       Curso_Medio:'',
+      Curso_Tipo_2:'',
+      Curso_Titulo_2:'',
+      Curso_Fecha_2:'',
+      Curso_Medio_2:'',
+      Curso_Tipo_3:'',
+      Curso_Titulo_3:'',
+      Curso_Fecha_3:'',
+      Curso_Medio_3:'',
       Sector_1:'',
       Sector_2:'',
       Sector_3:'',
       Area_1:'',
       Area_2:'',
       Area_3:'',
+      Software_1:'',
+      Software_2:'',
+      Software_3:'',
+      Habilidad_1:'',
+      Habilidad_2:'',
+      Habilidad_3:'',
     },
   },
   mutations: {
@@ -66,21 +81,18 @@ export default new Vuex.Store({
       console.log(state.CV.Fecha_Nacimiento);
     },
     agregarUbicacion(state, ubicacion){
-      
       state.CV.Estado = ubicacion.estado
       state.CV.Municipio = ubicacion.municipio
       state.CV.CP = ubicacion.cp
       console.log(state.CV.Estado);
       console.log(state.CV.Municipio);
       console.log(state.CV.CP);
-      
     },
     agregarSocial(state, social){
       state.CV.Facebook = social.facebook
       state.CV.Linkedin = social.linkedin
       console.log(state.CV.Facebook);
       console.log(state.CV.Linkedin);
-      
     },
     agregarPerfilProfesional(state, perfil_pro){
       state.CV.Perfil_Profesional = perfil_pro.perfil
@@ -122,14 +134,16 @@ export default new Vuex.Store({
     agregarFormacion(state, formacion){
       state.CV.Titulo_Estudios = formacion.titulo_estudios
       state.CV.Centro_Estudios = formacion.centro_estudios
-      state.CV.Estudio_Municipio = formacion.estudio_Municipio
+      state.CV.Estudio_Ciudad = formacion.estudio_Ciudad
+      state.CV.Cedula= formacion.cedula
       state.CV.Estudio_Estado = formacion.estudio_estado
       state.CV.Estudio_Pais = formacion.estudio_pais
       state.CV.Estudio_Fecha = formacion.estudio_fecha
 
       console.log(state.CV.Titulo_Estudios);
       console.log(state.CV.Centro_Estudios );
-      console.log(state.CV.Estudio_Municipio );
+      console.log(state.CV.Cedula);
+      console.log(state.CV.Estudio_Ciudad);
       console.log(state.CV.Estudio_Estado);
       console.log(state.CV.Estudio_Pais);
       console.log(state.CV.Estudio_Fecha);
@@ -144,6 +158,24 @@ export default new Vuex.Store({
       console.log(state.CV.Curso_Titulo);
       console.log(state.CV.Curso_Fecha);
       console.log(state.CV.Curso_Medio );
+
+      state.CV.Curso_Tipo_2 = cursos.cursos_tipo_2 
+      state.CV.Curso_Titulo_2  = cursos.cursos_titulo_2 
+      state.CV.Curso_Fecha_2  = cursos.cursos_fecha_2 
+      state.CV.Curso_Medio_2  = cursos.cursos_medio_2 
+      console.log(state.CV.Curso_Tipo_2 );
+      console.log(state.CV.Curso_Titulo_2 );
+      console.log(state.CV.Curso_Fecha_2 );
+      console.log(state.CV.Curso_Medio_2 );
+
+      state.CV.Curso_Tipo_3 = cursos.cursos_tipo_3
+      state.CV.Curso_Titulo_3 = cursos.cursos_titulo_3
+      state.CV.Curso_Fecha_3 = cursos.cursos_fecha_3
+      state.CV.Curso_Medio_3 = cursos.cursos_medio_3
+      console.log(state.CV.Curso_Tipo_3);
+      console.log(state.CV.Curso_Titulo_3);
+      console.log(state.CV.Curso_Fecha_3);
+      console.log(state.CV.Curso_Medio_3);
     },  
     agregarCompetencias(state, competencias){
       state.CV.Sector_1 = competencias.sector_1
@@ -152,8 +184,24 @@ export default new Vuex.Store({
       state.CV.Area_1 = competencias.area_1
       state.CV.Area_2 = competencias.area_2
       state.CV.Area_3 = competencias.area_3
+      state.CV.Software_1 = competencias.software_1
+      state.CV.Software_2 = competencias.software_2
+      state.CV.Software_3 = competencias.software_3
+      state.CV.Habilidad_1 = competencias.habilidad_1
+      state.CV.Habilidad_2 = competencias.habilidad_2
+      state.CV.Habilidad_3 = competencias.habilidad_3
       console.log(state.CV.Sector_1  );
+      console.log(state.CV.Sector_2  );
+      console.log(state.CV.Sector_3  );
       console.log(state.CV.Area_1 );
+      console.log(state.CV.Area_2 );
+      console.log(state.CV.Area_3 );
+      console.log(state.CV.Software_1 );
+      console.log(state.CV.Software_2 );
+      console.log(state.CV.Software_3 );
+      console.log(state.CV.Habilidad_1 );
+      console.log(state.CV.Habilidad_2 );
+      console.log(state.CV.Habilidad_3 );
     },
   },
 
@@ -161,7 +209,6 @@ export default new Vuex.Store({
     agregarDatosPersonales(context, datos_personales){
       context.commit('agregarDatosPersonales', datos_personales)
       console.log('DatosPersonales');
-      
     },
     agregarUbicacion(context, ubicacion){
       context.commit('agregarUbicacion', ubicacion)
