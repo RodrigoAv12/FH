@@ -1,15 +1,11 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg  fixed-top" id="nav">
-      <div class="container-fluid">
-        <a class="navbar-brand js-scroll-trigger" href="Index.html">
-          <img
-            class="main-logo"
-            style="height: 50px; width: 50px; margin-top: -90px; margin-bottom: -85px;"
-            src="@/assets/Logo.png"
-            alt
-          />
-        </a>
+
+    <toolbar class="navbar sticky-top navbar-expand-lg navbar-light grey darken-3">
+      <v-toolbar-title href="/" class="navbar-brand" style="color: white">Logo</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
 
         <button
           class="navbar-toggler"
@@ -22,155 +18,86 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto" style="align-self: flex-end">
-            <li class="nav-item" v-if="inicio_sesion !== true">
-              <a
-                class="nav-link js-scroll-trigger"
-                style="color: black"
-                href="#"
-                data-toggle="modal"
-                data-target="#modalIniciarSesion"
-                >Iniciar Sesión</a
-              >
-            </li>
-            <li class="nav-item" v-if="inicio_sesion !== true">
-              <a
-                class="nav-link js-scroll-trigger"
-                style="color: black"
-                href="#"
-                data-toggle="modal"
-                data-target="#myModal"
-                >Registro</a
-              >
-            </li>
-            <li class="nav-item dropdown"  v-if="inicio_sesion === true">
-              <a
-              style="color: black"
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Mi cuenta
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <router-link
-                  class="nav-item nav-link "
-                  style="color: black"
-                  v-for="menu in menus"
-                  v-bind:key="menu.id"
-                  :to="`${menu.page}`"
-                  >{{ menu.text }}</router-link
-                >
-              </div>
-            </li>
 
-            <router-link
-              class="nav-item nav-link js-scroll-trigger"
-              style="color: black"
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <v-btn
+              style="margin-right:20px"
+              color="grey darken-3"
+              elevation="0px"
+              class="white--text"
               v-for="routes in links"
               v-bind:key="routes.id"
               :to="`${routes.page}`"
-              >{{ routes.text }}</router-link
+            >{{ routes.text }}</v-btn>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <v-menu dark offset-y open-delay="10" return-value="RegresaUnValor">
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  style="margin-left:-25px"
+                  color="grey darken-3"
+                  elevation="0px"
+                  class="white--text"
+                  v-on="on"
+                >Mi Cuenta</v-btn>
+              </template>
+
+              <v-list>
+                <v-list-item
+                  v-for="(menu_usuario) in menus"
+                  v-bind:key="menu_usuario.id"
+                  :to="`${menu_usuario.page}`"
+                >
+                  <v-list-item-title>{{menu_usuario.titulo}}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <b-button v-b-modal.my-modal>Registro</b-button>
+
+            <b-modal
+              
+              style="margin:-10`x"
+              id="my-modal"
+              hide-footer
+             
+              title="Regístrate"
             >
+              <!---------------------NavBar-------------------->
+              <NuevoUsuario @inicio="inicioSesion"></NuevoUsuario>
+              <!---------------------NavBar-------------------->
+            </b-modal>
           </ul>
         </div>
-      </div>
-    </nav>
-    <!---------------Modal Form Iniciar Sesión----------------------->
-    <div>
-      <!-- The Modal -->
-      <div class="modal" id="modalIniciarSesion">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header text-center">
-              <h4 class="modal-title w-100 register-title">Log in</h4>
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-              <!-- Default form register -->
-              <form class="text-center border border-light p-5" action="#!">
-                <!-- E-mail -->
-                <input
-                  type="email"
-                  id="defaultRegisterFormEmail"
-                  style="margin-top:-15%"
-                  class="form-control mb-4"
-                  placeholder="E-mail"
-                />
-                <!-- Password -->
-                <input
-                  type="password"
-                  id="defaultRegisterFormPassword"
-                  class="form-control mb-4"
-                  placeholder="Password"
-                  aria-describedby="defaultRegisterFormPasswordHelpBlock"
-                />
+      </v-toolbar-items>
+    </toolbar>
+    
 
-                <!-- Botón de Inicio de Sesión -->
-                <div
-                  class="checkbox"
-                  style="margin-bottom: -5%; margin-top: -2%"
-                >
-                  <label> <input type="checkbox" /> Remember me </label>
-                </div>
-                <button class="btn btn-primary my-4 btn-block" type="submit">
-                  Log in
-                </button>
-                <!-- Terms of service -->
-                <p>
-                  <a href target="_blank">Forgot my password</a>
-                </p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!---------------Modal Form Registro----------------------->
-    <div>
-      <!-- The Modal -->
-      <div class="modal" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <!---------------------NavBar-------------------->
-            <NuevoUsuario @inicio="inicioSesion"></NuevoUsuario>
-            <!---------------------NavBar-------------------->
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import NuevoUsuario from "@/components/Forms/NuevoUsuario";
-import RegistroCV from "@/views/RegistroCV";
-import Inicio from "@/views/Inicio";
-import About from "@/views/About";
-import NavegadorUsuario from "@/views/NavegadorUsuario";
+import RegistroCV from "@/views/RegistroCV"
+import Inicio from "@/views/Inicio"
+import About from "@/views/About"
+
 
 export default {
   components: {
-    NuevoUsuario
+    NuevoUsuario,
   },
   data() {
     return {
       vistaActual: "RegistroUser",
-      inicio_sesion: false,
+      inicio_sesion: "false",
       dialog: false,
       brand: "Barra de Navegacion",
       menus: [
-        { id: 0, titulo: "Registrar CV", page: "/registro_cv" },
-        { id: 1, titulo: "Mi perfil", page: "/navegador_usuario" }
+        { titulo: "Registrar CV", page: "/registro_cv" },
+        { titulo: "Mi perfil" }
       ],
       links: [
         {
@@ -178,9 +105,13 @@ export default {
           text: "Inicio",
           page: "/inicio"
         },
-
         {
           id: 1,
+          text: "About",
+          page: "/about"
+        },
+        {
+          id: 2,
           text: "Registrarse",
           page: "/RegistroUsuario"
         }
@@ -192,7 +123,7 @@ export default {
       this.$refs["my-modal"].show();
     },
     hideModal() {
-      this.$refs["my-modal"].hide();
+      $bvModal.hide('my-modal')
     },
     toggleModal() {
       // We pass the ID of the button that we want to return focus to
@@ -200,8 +131,8 @@ export default {
       this.$refs["my-modal"].toggle("#toggle-btn");
     },
     inicioSesion: function(x) {
-      console.log("Entró");
-      this.inicio_sesion = true;
+      console.log(x);
+      this.$refs["my-modal"].hide();
     }
   }
 };
@@ -210,6 +141,5 @@ export default {
 .navbar {
   background-color: rgba(0, 0, 0, 0.05);
 }
-
 
 </style>
