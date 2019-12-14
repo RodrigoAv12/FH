@@ -1,6 +1,6 @@
 <template>
       <section class="full-width formated-section">
-		<h1 class="text-center font-oswald">Encuentra el mejor trabajo de acuerdo a tu perfil y experiencia!</h1><br>
+		<h1 class="text-center font-oswald" style="font-family:'Montserrat', sans-serif;">Encuentra el mejor trabajo de acuerdo a tu perfil y experiencia!</h1><br>
     <h3 class="text-center font-oswald" style="font-family:'Montserrat', sans-serif;">Te ayudamos a OBTENER TRABAJO en solo 4 pasos...</h3><br>
 		<div class="container">
 			<div class="row">

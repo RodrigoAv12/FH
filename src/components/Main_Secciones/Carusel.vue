@@ -81,6 +81,17 @@ form{
 	background-color: #fff;
 	color: #333;
 }
+@media only screen and (max-width: 400px) {
+form{
+			background-color: white;
+			border-radius: 3px;
+			color: #000;
+			font-size: 0.8em;
+			padding: 20px;
+			margin: 0 auto;
+      		height: auto;
+			width: auto;
+}}
 @media only screen and (max-width: 768px) {
 form{
 			background-color: white;
@@ -89,8 +100,8 @@ form{
 			font-size: 0.8em;
 			padding: 20px;
 			margin: 0 auto;
-      		height: 550px;
-			width: 500px;
+      		height: auto;
+			width: auto;
 }}
 @media only screen and (max-width: 900px) {
 form{
@@ -100,8 +111,8 @@ form{
 			font-size: 0.8em;
 			padding: 20px;
 			margin: 0 auto;
-      		height: 550px;
-			width: 500px;
+      		height: auto;
+			width: auto;
 }}
 @media only screen and (max-width: 1264px) {
 form{
@@ -111,8 +122,8 @@ form{
 			font-size: 0.8em;
 			padding: 20px;
 			margin: 0 auto;
-      		height: 550px;
-			width: 500px;
+      		height: auto;
+			width: auto;
 }}
 
 @keyframes banner{

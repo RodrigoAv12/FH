@@ -1,5 +1,6 @@
 <template>
       <div class="divv" ><br>
+      <v-divider  style="margin-left:220px;margin-right:220px"></v-divider><br>
           <v-row justify="space-around">
             <h1 style="font-family: 'Montserrat', sans-serif; color: #000000;">24,000 EMPRESAS</h1>
 

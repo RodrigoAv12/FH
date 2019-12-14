@@ -50,26 +50,21 @@
         <v-row>
           <v-col md="12">
             <v-row align="center" justify="center">
-              <v-img
-                aspect-ratio="1"
-                class="grey lighten-2"
-                max-width="500"
-                max-height="300"
-              ></v-img>
+        
             </v-row>
           </v-col>
           <v-col justify-self="center" style="margin-top:-20px">
             <v-row justify="center" class="pt-3">
-              <v-btn light @click.native="openFileDialog"
-                >Agregar Imagen de Perfil</v-btn
-              >
-              <input
-                accept="image/x-png, image/gif, image/jpeg"
-                type="file"
-                id="file-upload"
-                style="display:none"
-                @change="onFileChange"
-              />
+                <div v-if="!image">
+   
+             <input type="file" @change="onFileChange">
+              </div>
+             <div v-else>
+             <img :src="image" />
+               <v-btn dark @click="removeImage">Cambiar Foto </v-btn>
+             </div>
+              
+    
             </v-row>
           </v-col>
         </v-row>
@@ -91,6 +86,7 @@
 export default {
   data() {
     return {
+     
       menu2: false,
       formData: new FormData(),
       rules: [
@@ -99,14 +95,17 @@ export default {
           value.size < 5000000 ||
           "Avatar size should be less than 5 MB!"
       ],
-
+      
+       image: '',
+  
       nombre: "",
       apellido_paterno: "",
       apellido_materno: "",
       correo: "",
       tel: "",
       fecha_nacimiento: "",
-      curp: ""
+      curp: "",
+
     };
   },
 
@@ -130,22 +129,25 @@ export default {
       document.getElementById("file-upload").click();
     },
     onFileChange(e) {
-      // var self = this;
-      // var files = e.target.files || e.dataTransfer.files;
-      // if(files.length > 0){
-      //     for(var i = 0; i< files.length; i++){
-      //         self.formData.append("file", files[i], files[i].name);
-      //     }
-      // }
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+        return;
+      this.createImage(files[0]);
     },
-    uploadFile() {
-      // var self = this;
-      // axios.post('URL', self.formData).then(function (response) {
-      //     console.log(response);
-      // }).catch(function (error) {
-      //     console.log(error);
-      // });
+   createImage(file) {
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.image = '';
     }
+
   }
 };
 </script>
@@ -154,5 +156,11 @@ export default {
   background: white;
   border-bottom: 0.8px solid rgba(20, 18, 18, 0.733);
   padding: 5px;
+}
+img {
+
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
 }
 </style>
