@@ -2,8 +2,7 @@
 <div >
     <v-parallax
       height="300"
-      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-      
+      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg" 
     >
       <v-container>
         <h3 style="font-family: 'Montserrat', sans-serif;">Busca Empleo Ahora</h3>

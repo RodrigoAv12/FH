@@ -10,7 +10,10 @@
             class="grey lighten-5"
             style="height: 500px;"
           >
-            <v-card v-for="n in 1" :key="n" class="ma-3 pa-6" outlined tile>
+            <v-card
+             v-for="n in 1" 
+             :key="n"
+             class="ma-3 pa-6" outlined tile>
               <v-row align="center" justify="center">
                 ¡Comienza ya desde tu cuenta de Facebook!
               </v-row>

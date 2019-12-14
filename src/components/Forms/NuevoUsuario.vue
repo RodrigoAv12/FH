@@ -1,62 +1,59 @@
 <template>
-  <div>
-    <!-- Modal Header -->
-    <div class="modal-header text-center">
-      <h4 class="modal-title w-100 register-title">Regístrate</h4>
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-    </div>
-    <!-- Modal body -->
-    <div class="modal-body">
-      <!-- Default form register -->
-      <form
-        class="text-center bg-white border-white p-2"
-        @submit.prevent="agregarUsuaruio(),inicio(true)"
-      >
-        <div style="margin-top:-1%">
-          <!-- Nombre(s) -->
+  <v-app>
+    <form @submit.prevent="agregarUsuaruio(),inicio(true)" class="white">
+      <v-row justify="center">
+        Registro
+        <v-col style="margin-bottom:-40px" justify-self="center" cols="12" sm="6" md="12">
           <v-text-field v-model="usuario.nombre" outlined label="Nombre(s)" required></v-text-field>
-
-          <v-row>
-            <!-- Apellido P -->
-            <v-col md="6">
-              <v-text-field outlined v-model="usuario.apellido_p" label="Apellido Paterno" required></v-text-field>
-            </v-col>
-            <!-- Apellido -->
-            <v-col md="6">
-              <v-text-field outlined v-model="usuario.apellido_m" label="Apellido Materno" required></v-text-field>
-            </v-col>
-          </v-row>
-          <!-- E-mail -->
+        </v-col>
+        <v-col cols="12" sm="6" md="6" style="margin-bottom:-40px">
+          <v-text-field outlined v-model="usuario.apellido_p" label="Apellido Paterno" required></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="6" md="6" style="margin-bottom:-40px">
+          <v-text-field outlined v-model="usuario.apellido_m" label="Apellido Materno" required></v-text-field>
+        </v-col>
+        <v-col cols="12" md="12" style="margin-bottom:-40px">
           <v-text-field outlined v-model="usuario.correo" label="Correo Electrónico" required></v-text-field>
-          <!-- Confirmar E-mail -->
-          <v-text-field outlined label="Confirmar Correo Electrónico" required></v-text-field>
+        </v-col>
+        <v-col cols="12" md="12" style="margin-bottom:-40px">
+          <v-text-field outlined label="Confirmar Correo Electrònico" required></v-text-field>
+        </v-col>
 
-          <!-- Password -->
+        <v-col cols="12" md="12" style="margin-bottom:-40px">
           <v-text-field v-model="usuario.pass" outlined label="Contraseña" type="password" required></v-text-field>
-          <!-- Confirmar Password -->
+        </v-col>
+        <v-col cols="12" md="12" style="margin-bottom:-20px">
           <v-text-field outlined label="Confirmar Contraseña" type="password" required></v-text-field>
-          <!-- Botón de Aceptar el Registro -->
-          <button class="btn btn-primary my-4 btn-block" type="submit">Aceptar</button>
-          <!-- Terms of service -->
-          <p>
-            ¿Ya tienes una cuenta?
-            <a
-              href="#"
-              data-dismiss="modal"
-              data-toggle="modal"
-              data-target="#modalIniciarSesion"
-            >Iniciar Sesión</a>
-          </p>
-          <hr />
-          <small>
-            Al registrarte aceptas los
-            <a href target="_blank">terminos de uso y condiciones</a>
-            de factor humano
-          </small>
-        </div>
-      </form>
-    </div>
-  </div>
+        </v-col>
+      </v-row>
+      <v-row justify="center">
+        <v-col md="12" justify-self="center">
+          <v-btn  height="50px" block color="primary" type="submit">Aceptar</v-btn>
+        </v-col>
+      </v-row>
+      <v-row justify="center" class="white">
+        <v-col md="12" cols="12">
+          <v-row align="center" justify="center">
+            <p>
+              ¿Ya tienes cuenta?
+              <a href target="_blank">iniciar sesiòn</a>
+            </p>
+          </v-row>
+        </v-col>
+        <v-col md="12" cols="12" style="margin-top:-40px; margin-bottom: -40px">
+          <v-divider></v-divider>
+        </v-col>
+        <v-col md="12">
+          <v-row align="center" justify="center">
+            <p>
+              Al registrarte aceptas nuestras
+              <a href target="_blank">condiciones y políticas</a>
+            </p>
+          </v-row>
+        </v-col>
+      </v-row>
+    </form>
+  </v-app>
 </template>
 <script>
 export default {
@@ -85,27 +82,17 @@ export default {
           this.usuario.apellido_m = "";
           this.usuario.correo = "";
           this.usuario.pass = "";
+
+          this.inicio(result.data.id);
         })
         .catch(err => {
           console.log(err.response);
         });
     },
     inicio(x) {
-      console.log(x);
+      console.log("inicio");
       this.$emit("inicio", x);
     }
   }
 };
 </script>
-
-<style  scoped>
-
-.modal-header {
-    border-bottom: 0 none;
-}
-
-.modal-footer {
-    border-top: 0 none;
-}
-
-</style>
